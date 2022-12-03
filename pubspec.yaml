@@ -49,6 +49,7 @@ dependencies:
   month_picker_dialog_2: ^0.5.4+1
   easy_autocomplete: ^1.6.0
   badges: ^2.0.3
+  quickalert: ^1.0.1
 
 dev_dependencies:
   flutter_test:

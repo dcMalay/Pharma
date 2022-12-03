@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pharma/const.dart';
+import 'package:quickalert/quickalert.dart';
 import '../../my_order/my_order_screen.dart';
 import '../../theme/custom_theme.dart';
 import 'custom_order.dart';
@@ -172,7 +173,7 @@ class ProductDetails extends StatelessWidget {
                   child: const Center(child: Text('Ethical')),
                 ),
                 const Text(
-                  "same Product bonus",
+                  "Atorvastatin & Fenofibrate Tablets IP",
                   style: TextStyle(fontSize: 25),
                 ),
                 const SizedBox(
@@ -186,7 +187,7 @@ class ProductDetails extends StatelessWidget {
                       children: [
                         const Padding(
                           padding: EdgeInsets.only(left: 8.0),
-                          child: Text("MRP-\$100"),
+                          child: Text("MRP- Rs.100"),
                         ),
                         Container(
                           height: 30,
@@ -210,7 +211,7 @@ class ProductDetails extends StatelessWidget {
                         Row(
                           children: const [
                             Text(
-                              '\$75.94',
+                              'Rs. 75.94',
                               style:
                                   TextStyle(color: Colors.green, fontSize: 30),
                             ),
@@ -218,7 +219,7 @@ class ProductDetails extends StatelessWidget {
                               width: 10,
                             ),
                             Text(
-                              '\$100',
+                              'Rs.100',
                               style: TextStyle(
                                   color: Colors.black,
                                   decoration: TextDecoration.lineThrough,
@@ -227,7 +228,7 @@ class ProductDetails extends StatelessWidget {
                           ],
                         ),
                         const Text(
-                          'Exclusie of GST',
+                          'Exclusive of GST',
                           style: TextStyle(color: Colors.red, fontSize: 18),
                         ),
                       ],
@@ -255,7 +256,7 @@ class ProductDetails extends StatelessWidget {
                           style: TextStyle(color: Colors.grey),
                         ),
                         subtitle: Text(
-                          'Strip',
+                          'Tablets',
                           style: TextStyle(color: Colors.black),
                         ),
                       ),
@@ -395,11 +396,17 @@ class ProductDetails extends StatelessWidget {
               width: 10,
             ),
             CupertinoButton(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                color: const Color.fromARGB(255, 93, 90, 241),
-                child: const Text('Add to Bag'),
-                onPressed: () {}),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              color: const Color.fromARGB(255, 93, 90, 241),
+              child: const Text('Order Now'),
+              onPressed: () {
+                QuickAlert.show(
+                  context: context,
+                  type: QuickAlertType.success,
+                  text: 'You successfully place a order',
+                );
+              },
+            ),
             const SizedBox(
               width: 10,
             ),

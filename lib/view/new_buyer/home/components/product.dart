@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pharma/view/new_buyer/home/components/productdetails.dart';
+import 'package:quickalert/quickalert.dart';
 
 import '../../../../const.dart';
 
@@ -55,6 +56,7 @@ class ProductCard extends StatelessWidget {
     return SizedBox(
       height: 200,
       child: ListView.builder(
+          physics: BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           itemCount: productDate.length,
           itemBuilder: (context, index) {
@@ -148,7 +150,13 @@ class ProductCard extends StatelessWidget {
                               'Add to Bag',
                               style: TextStyle(color: Colors.white),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              QuickAlert.show(
+                                context: context,
+                                type: QuickAlertType.success,
+                                text: 'Product successfully added to your bag',
+                              );
+                            },
                           ),
                         )
                       ],
