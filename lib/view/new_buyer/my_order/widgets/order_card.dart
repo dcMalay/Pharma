@@ -181,29 +181,44 @@ class OrderCard extends StatelessWidget {
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.only(left: 30),
-                    width: 80,
-                    height: 30,
-                    child: CupertinoButton(
-                      padding: const EdgeInsets.all(0),
-                      color: '${currentItem['isAccepted']}' == "true"
-                          ? Colors.green
-                          : Colors.grey,
-                      child: '${currentItem['isAccepted']}' == 'true'
-                          ? Text(
-                              'Accepted',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 10),
-                            )
-                          : Text(
-                              'Rejected',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 10),
-                            ),
-                      onPressed: () {},
-                    ),
-                  ),
+                  '${currentItem['isAccepted']}' == 'true'
+                      ? Text(
+                          'Accepted',
+                          style: TextStyle(
+                              color: Colors.green,
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold),
+                        )
+                      : Text(
+                          'Rejected',
+                          style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold),
+                        ),
+                  // Container(
+                  //   padding: const EdgeInsets.only(left: 30),
+                  //   width: 80,
+                  //   height: 30,
+                  //   child: CupertinoButton(
+                  //     padding: const EdgeInsets.all(0),
+                  //     color: '${currentItem['isAccepted']}' == "true"
+                  //         ? Colors.green
+                  //         : Colors.grey,
+                  //     child: '${currentItem['isAccepted']}' == 'true'
+                  //         ? Text(
+                  //             'Accepted',
+                  //             style:
+                  //                 TextStyle(color: Colors.white, fontSize: 10),
+                  //           )
+                  //         : Text(
+                  //             'Rejected',
+                  //             style:
+                  //                 TextStyle(color: Colors.white, fontSize: 10),
+                  //           ),
+                  //     onPressed: () {},
+                  //   ),
+                  // ),
                   Container(
                     padding: const EdgeInsets.only(left: 10),
                     width: 90,
@@ -212,7 +227,7 @@ class OrderCard extends StatelessWidget {
                       padding: const EdgeInsets.all(0),
                       color: '${currentItem['isAccepted']}' == 'true'
                           ? const Color.fromARGB(255, 93, 90, 241)
-                          : Colors.red,
+                          : Colors.grey,
                       child: '${currentItem['isAccepted']}' == 'true'
                           ? Text(
                               'Make payment',

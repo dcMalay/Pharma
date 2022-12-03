@@ -3,8 +3,7 @@ import 'package:pharma/const.dart';
 import 'package:pharma/main/verify.dart';
 import 'package:pharma/query/seller/global.dart';
 import 'package:pharma/query/seller/main/login.dart';
-
-import '../view/buyer/home/home.dart';
+import '../view/home.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -37,39 +36,39 @@ class _LoginState extends State<Login> {
               onTap: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) {
-                  return const BuyerHomePage();
+                  return const Home();
                 }));
-                if (phoneeNo.text.length == 10) {
-                  print('otp button tapped ');
-                  sendOtpMethod(context,
-                          body:
-                              LoginParams(country: "", phoneNo: phoneeNo.text))
-                      .then((value) {
-                    if (value!.status == 200) {
-                      print('otp button tapped ${value.otp}');
-                      SellerGlobalHandler.snackBar(
-                          context: context,
-                          isSuccess: true,
-                          message: value.message!.toString());
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Verify(
-                                    phoneNo: phoneeNo.text,
-                                  )));
-                    } else {
-                      SellerGlobalHandler.snackBar(
-                          context: context,
-                          isError: true,
-                          message: value.message!.toString());
-                    }
-                  });
-                } else {
-                  SellerGlobalHandler.snackBar(
-                      context: context,
-                      isError: true,
-                      message: "Please enter 10 digit phone number");
-                }
+                // if (phoneeNo.text.length == 10) {
+                //   print('otp button tapped ');
+                //   sendOtpMethod(context,
+                //           body:
+                //               LoginParams(country: "", phoneNo: phoneeNo.text))
+                //       .then((value) {
+                //     if (value!.status == 200) {
+                //       print('otp button tapped ${value.otp}');
+                //       SellerGlobalHandler.snackBar(
+                //           context: context,
+                //           isSuccess: true,
+                //           message: value.message!.toString());
+                //       Navigator.push(
+                //           context,
+                //           MaterialPageRoute(
+                //               builder: (context) => Verify(
+                //                     phoneNo: phoneeNo.text,
+                //                   )));
+                //     } else {
+                //       SellerGlobalHandler.snackBar(
+                //           context: context,
+                //           isError: true,
+                //           message: value.message!.toString());
+                //     }
+                //   });
+                // } else {
+                //   SellerGlobalHandler.snackBar(
+                //       context: context,
+                //       isError: true,
+                //       message: "Please enter 10 digit phone number");
+                // }
               },
               child: Container(
                 padding: EdgeInsets.all(10),

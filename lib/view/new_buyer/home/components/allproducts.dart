@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../const.dart';
 import '../../theme/custom_theme.dart';
 import 'productdetails.dart';
 
@@ -10,6 +11,15 @@ class AllProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: blackColor,
+            )),
+        centerTitle: true,
         backgroundColor: Colors.white,
         title: const Text(
           'All Products',

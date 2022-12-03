@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../const.dart';
 import '../../my_order/my_order_screen.dart';
 import '../../theme/custom_theme.dart';
 
@@ -25,6 +26,15 @@ class _CustomOrderScreenState extends State<CustomOrderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: blackColor,
+            )),
         backgroundColor: Colors.white,
         title: const Text(
           'Place Your Custom Order',
@@ -59,12 +69,36 @@ class _CustomOrderScreenState extends State<CustomOrderScreen> {
               height: 30,
             ),
             TextField(
+              readOnly: true,
               keyboardType: TextInputType.number,
               inputFormatters: <TextInputFormatter>[
                 FilteringTextInputFormatter.digitsOnly
               ],
               decoration: InputDecoration(
-                hintText: "Name of Product",
+                hintText: "Paracitamol",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    color: CustomTheme.violet,
+                    width: 1.0,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            TextField(
+              readOnly: true,
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly
+              ],
+              decoration: InputDecoration(
+                hintText: "MRP-\$100",
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -105,7 +139,7 @@ class _CustomOrderScreenState extends State<CustomOrderScreen> {
             TextField(
               controller: dateinput,
               decoration: InputDecoration(
-                hintText: "Expacted date of Deliery",
+                hintText: "Expected date of Delivery",
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),

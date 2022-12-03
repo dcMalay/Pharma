@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../const.dart';
 import 'widgets/order_card.dart';
 
 class MyOrderScreen extends StatelessWidget {
@@ -10,6 +11,14 @@ class MyOrderScreen extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 1,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: blackColor,
+            )),
         backgroundColor: Colors.white,
         title: const Text(
           "My Order",
@@ -29,32 +38,6 @@ class MyOrderScreen extends StatelessWidget {
               width: 200,
               padding: const EdgeInsets.only(top: 18.0),
               child: const OrderCard()),
-          // const Padding(
-          //   padding: EdgeInsets.symmetric(horizontal: 20),
-          //   child: ListTile(
-          //     title: Text('Total'),
-          //     trailing: Text(
-          //       '\$50.98',
-          //       style: TextStyle(
-          //         fontSize: 20,
-          //       ),
-          //     ),
-          //   ),
-          // ),
-          // Container(
-          //   margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
-          //   width: 150,
-          //   height: 50,
-          //   child: CupertinoButton(
-          //     padding: const EdgeInsets.all(0),
-          //     color: const Color.fromARGB(255, 93, 90, 241),
-          //     child: Text(
-          //       'Proceed to Check Out',
-          //       style: TextStyle(color: Colors.white),
-          //     ),
-          //     onPressed: () {},
-          //   ),
-          // ),
         ],
       ),
     );
