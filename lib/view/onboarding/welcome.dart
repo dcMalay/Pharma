@@ -82,7 +82,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'Not a stokist? ',
+                    'Not a seller? ',
                     style: TextStyle(fontSize: 16, color: Color(0xFFA3A6BA)),
                   ),
                   InkWell(

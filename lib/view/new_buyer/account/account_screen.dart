@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pharma/view/new_buyer/my_order/my_order_screen.dart';
 
 import 'orderandtracking.dart';
 
@@ -77,7 +78,7 @@ class AccountScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return const OrderandTracking();
+                      return const MyOrderScreen();
                     }));
                   },
                   child: Row(
@@ -93,17 +94,17 @@ class AccountScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           Text(
-                            "My Order & Tracking",
+                            "My Orders",
                             style: TextStyle(color: Colors.black, fontSize: 14),
                           ),
-                          Text(
-                            "wfkhfiur reifjbrueibf \ni rifuierbf rufhreuf",
-                            style: TextStyle(color: Colors.grey, fontSize: 12),
-                          ),
+                          // Text(
+                          //   "wfkhfiur reifjbrueibf \ni rifuierbf rufhreuf",
+                          //   style: TextStyle(color: Colors.grey, fontSize: 12),
+                          // ),
                         ],
                       ),
                       const SizedBox(
-                        width: 95,
+                        width: 155,
                       ),
                       const Icon(
                         Icons.arrow_forward_ios,
@@ -131,10 +132,10 @@ class AccountScreen extends StatelessWidget {
                           "Returns & Refunds",
                           style: TextStyle(color: Colors.black, fontSize: 14),
                         ),
-                        Text(
-                          "wfkhfiur reifjbrueibf \ni rifuierbf rufhreuf",
-                          style: TextStyle(color: Colors.grey, fontSize: 12),
-                        ),
+                        // Text(
+                        //   "wfkhfiur reifjbrueibf \ni rifuierbf rufhreuf",
+                        //   style: TextStyle(color: Colors.grey, fontSize: 12),
+                        // ),
                       ],
                     ),
                     const SizedBox(
@@ -165,14 +166,14 @@ class AccountScreen extends StatelessWidget {
                           "Login & Security",
                           style: TextStyle(color: Colors.black, fontSize: 14),
                         ),
-                        Text(
-                          "wfkhfiur reifjbrueibf \ni rifuierbf rufhreuf",
-                          style: TextStyle(color: Colors.grey, fontSize: 12),
-                        ),
+                        // Text(
+                        //   "wfkhfiur reifjbrueibf \ni rifuierbf rufhreuf",
+                        //   style: TextStyle(color: Colors.grey, fontSize: 12),
+                        // ),
                       ],
                     ),
                     const SizedBox(
-                      width: 110,
+                      width: 115,
                     ),
                     const Icon(
                       Icons.arrow_forward_ios,
@@ -199,14 +200,14 @@ class AccountScreen extends StatelessWidget {
                           "Buying & Selling",
                           style: TextStyle(color: Colors.black, fontSize: 14),
                         ),
-                        Text(
-                          "wfkhfiur reifjbrueibf i \nrifuierbf rufhreuf",
-                          style: TextStyle(color: Colors.grey, fontSize: 12),
-                        ),
+                        // Text(
+                        //   "wfkhfiur reifjbrueibf i \nrifuierbf rufhreuf",
+                        //   style: TextStyle(color: Colors.grey, fontSize: 12),
+                        // ),
                       ],
                     ),
                     const SizedBox(
-                      width: 105,
+                      width: 115,
                     ),
                     const Icon(
                       Icons.arrow_forward_ios,
@@ -233,14 +234,14 @@ class AccountScreen extends StatelessWidget {
                           "Shipping & Tracking",
                           style: TextStyle(color: Colors.black, fontSize: 14),
                         ),
-                        Text(
-                          "wfkhfiur reifjbrueibf \ni rifuierbf rufhreuf",
-                          style: TextStyle(color: Colors.grey, fontSize: 12),
-                        ),
+                        // Text(
+                        //   "wfkhfiur reifjbrueibf \ni rifuierbf rufhreuf",
+                        //   style: TextStyle(color: Colors.grey, fontSize: 12),
+                        // ),
                       ],
                     ),
                     const SizedBox(
-                      width: 95,
+                      width: 90,
                     ),
                     const Icon(
                       Icons.arrow_forward_ios,

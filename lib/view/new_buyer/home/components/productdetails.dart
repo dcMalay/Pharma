@@ -244,7 +244,7 @@ class ProductDetails extends StatelessWidget {
                           style: TextStyle(color: Colors.grey),
                         ),
                         subtitle: Text(
-                          '2023-02-10',
+                          '02-10-2023',
                           style: TextStyle(color: Colors.black),
                         ),
                       ),
@@ -403,7 +403,7 @@ class ProductDetails extends StatelessWidget {
                 QuickAlert.show(
                   context: context,
                   type: QuickAlertType.success,
-                  text: 'You successfully place a order',
+                  text: 'You successfully placed the order',
                 );
               },
             ),

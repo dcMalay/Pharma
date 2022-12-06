@@ -31,10 +31,6 @@ List<Map<String, String>> categoryDate = [
   },
   {
     "imageUrl": "https://cdn-icons-png.flaticon.com/512/761/761130.png",
-    "title": "Injections",
-  },
-  {
-    "imageUrl": "https://cdn-icons-png.flaticon.com/512/761/761130.png",
     "title": "Others",
   },
 ];

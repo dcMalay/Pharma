@@ -6,8 +6,8 @@ import 'cart/cart_screen.dart';
 import 'home/home_screen.dart';
 
 class BuyerHome extends StatefulWidget {
-  const BuyerHome({Key? key}) : super(key: key);
-
+  const BuyerHome({Key? key, required this.isLoggedIn}) : super(key: key);
+  final bool isLoggedIn;
   @override
   State<BuyerHome> createState() => _BuyerHomeState();
 }
@@ -61,8 +61,10 @@ class _BuyerHomeState extends State<BuyerHome> {
                 ),
               ]),
         ),
-        body: const TabBarView(children: [
-          HomeScreen(),
+        body: TabBarView(children: [
+          HomeScreen(
+            isLoggedIn: widget.isLoggedIn,
+          ),
           Allcategory(),
           AccountScreen(),
           CartScreen()

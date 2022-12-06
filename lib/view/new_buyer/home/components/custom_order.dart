@@ -171,7 +171,7 @@ class _CustomOrderScreenState extends State<CustomOrderScreen> {
                   FilteringTextInputFormatter.digitsOnly
                 ],
                 decoration: InputDecoration(
-                  hintText: "Expairy Date- 2023-02-10",
+                  hintText: "Expiry Date- 02-6-2023",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),

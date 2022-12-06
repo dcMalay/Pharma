@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:pharma/const.dart';
 
 class FilterProductsScreen extends StatefulWidget {
-  const FilterProductsScreen({super.key});
-
+  const FilterProductsScreen({super.key, required this.isSeller});
+  final bool isSeller;
   @override
   State<FilterProductsScreen> createState() => _FilterProductsScreenState();
 }
 
 class _FilterProductsScreenState extends State<FilterProductsScreen> {
+  bool isClicked = false;
+  var _dropDownValue;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,7 +85,102 @@ class _FilterProductsScreenState extends State<FilterProductsScreen> {
               height: 10,
             ),
             Text(
-              'FILTER BY PRICE',
+              'FILTER BY EXPIRY',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            DropdownButton(
+              borderRadius: BorderRadius.circular(6),
+              value: _dropDownValue,
+              hint: const Text('less than 3 months'),
+              items: [
+                DropdownMenuItem<String>(
+                    value: 'less than 3 months',
+                    child: Text('less than 3 months')),
+                DropdownMenuItem<String>(
+                    value: 'less than 6 months',
+                    child: Text('less than 6 months')),
+              ],
+              onChanged: (items) {},
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            widget.isSeller
+                ? Container()
+                : Text(
+                    'FILTER BY ',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+            SizedBox(
+              height: 10,
+            ),
+            widget.isSeller
+                ? Container()
+                : Divider(
+                    color: Colors.grey,
+                  ),
+            widget.isSeller
+                ? Container()
+                : ListTile(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 0),
+                    leading: Checkbox(
+                        value: isClicked,
+                        onChanged: (v) {
+                          setState(() {
+                            isClicked = v!;
+                          });
+                        }),
+                    title: Text(
+                      'New Items',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    trailing: Text(
+                      '(13)',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+            widget.isSeller
+                ? Container()
+                : ListTile(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 0),
+                    leading: Checkbox(value: false, onChanged: (v) {}),
+                    title: Text(
+                      'Best Selling',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    trailing: Text(
+                      '(35)',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+            widget.isSeller
+                ? Container()
+                : ListTile(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 0),
+                    leading: Checkbox(value: false, onChanged: (v) {}),
+                    title: Text(
+                      'Discount Items',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    trailing: Text(
+                      '(59)',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              'FILTER BY TYPE',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -101,11 +196,7 @@ class _FilterProductsScreenState extends State<FilterProductsScreen> {
               contentPadding: EdgeInsets.symmetric(horizontal: 0),
               leading: Checkbox(value: false, onChanged: (v) {}),
               title: Text(
-                'New Items',
-                style: TextStyle(color: Colors.grey),
-              ),
-              trailing: Text(
-                '(13)',
+                'Strip',
                 style: TextStyle(color: Colors.grey),
               ),
             ),
@@ -113,11 +204,7 @@ class _FilterProductsScreenState extends State<FilterProductsScreen> {
               contentPadding: EdgeInsets.symmetric(horizontal: 0),
               leading: Checkbox(value: false, onChanged: (v) {}),
               title: Text(
-                'Best Selling',
-                style: TextStyle(color: Colors.grey),
-              ),
-              trailing: Text(
-                '(35)',
+                'Bottle',
                 style: TextStyle(color: Colors.grey),
               ),
             ),
@@ -125,11 +212,23 @@ class _FilterProductsScreenState extends State<FilterProductsScreen> {
               contentPadding: EdgeInsets.symmetric(horizontal: 0),
               leading: Checkbox(value: false, onChanged: (v) {}),
               title: Text(
-                'Discount Items',
+                'Tube',
                 style: TextStyle(color: Colors.grey),
               ),
-              trailing: Text(
-                '(59)',
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.symmetric(horizontal: 0),
+              leading: Checkbox(value: false, onChanged: (v) {}),
+              title: Text(
+                'Vial',
+                style: TextStyle(color: Colors.grey),
+              ),
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.symmetric(horizontal: 0),
+              leading: Checkbox(value: false, onChanged: (v) {}),
+              title: Text(
+                'PFS',
                 style: TextStyle(color: Colors.grey),
               ),
             ),
@@ -171,8 +270,14 @@ class _FilterProductsScreenState extends State<FilterProductsScreen> {
                 fontSize: 16,
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
             Divider(
               color: Colors.grey,
+            ),
+            SizedBox(
+              height: 10,
             ),
             TextFormField(
               decoration: InputDecoration(

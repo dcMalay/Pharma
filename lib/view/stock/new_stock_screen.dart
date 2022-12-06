@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 
-import '../../../../const.dart';
-import '../../filter_products/filter_products_screen.dart';
-import '../../theme/custom_theme.dart';
-import 'productdetails.dart';
+import '../../const.dart';
+import '../new_buyer/filter_products/filter_products_screen.dart';
+import '../new_buyer/home/components/productdetails.dart';
+import '../new_buyer/theme/custom_theme.dart';
 
-class AllProducts extends StatefulWidget {
-  const AllProducts({super.key});
+class NewStockScreen extends StatefulWidget {
+  const NewStockScreen({super.key});
 
   @override
-  State<AllProducts> createState() => _AllProductsState();
+  State<NewStockScreen> createState() => _NewStockScreenState();
 }
 
-class _AllProductsState extends State<AllProducts> {
+class _NewStockScreenState extends State<NewStockScreen> {
   @override
   Widget build(BuildContext context) {
     var _dropDownValue;
@@ -39,7 +41,7 @@ class _AllProductsState extends State<AllProducts> {
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return const FilterProductsScreen(
-                    isSeller: false,
+                    isSeller: true,
                   );
                 }));
               },

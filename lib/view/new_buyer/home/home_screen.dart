@@ -1,6 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pharma/const.dart';
 import 'package:pharma/view/new_buyer/filter_products/filter_products_screen.dart';
 
 import '../notification/notification_screen.dart';
@@ -9,8 +10,8 @@ import 'components/category.dart';
 import 'components/product.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
+  const HomeScreen({super.key, required this.isLoggedIn});
+  final bool isLoggedIn;
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -21,10 +22,16 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
           leadingWidth: 0,
-          title: Image.asset(
-            'assets/logo.png',
-            height: 40,
-          ),
+          title: widget.isLoggedIn
+              ? Text(
+                  'Hii, Remesh',
+                  style: TextStyle(
+                      color: blackColor, decoration: TextDecoration.underline),
+                )
+              : Image.asset(
+                  'assets/logo.png',
+                  height: 40,
+                ),
           elevation: 0,
           backgroundColor: Colors.white,
           actions: [
@@ -138,7 +145,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         onPressed: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return const FilterProductsScreen();
+                            return const FilterProductsScreen(
+                              isSeller: false,
+                            );
                           }));
                         },
                       ),

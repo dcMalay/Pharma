@@ -6,6 +6,7 @@ import 'package:pharma/view/add_stock/add_stock.dart';
 import 'package:pharma/view/home/home.dart';
 import 'package:pharma/view/orders/order.dart';
 import 'package:pharma/view/settlements/settlement.dart';
+import 'package:pharma/view/stock/new_stock_screen.dart';
 import 'package:pharma/view/stock/stock.dart';
 import 'package:remixicon/remixicon.dart';
 
@@ -30,7 +31,7 @@ class _HomeState extends State<Home> {
                   ? const OrderTab()
                   : HomeProviderCallBack(context).listener.selectedScreen ==
                           "Stocks"
-                      ? const StockTab()
+                      ? const NewStockScreen()
                       : HomeProviderCallBack(context).listener.selectedScreen ==
                               "Add Stock"
                           ? AddStock()
@@ -51,7 +52,7 @@ class _HomeState extends State<Home> {
         centerItemText: 'Add Stock',
         color: greyColor,
         selectedColor: primaryColor,
-        notchedShape: const CircularNotchedRectangle(),
+        //  notchedShape: const CircularNotchedRectangle(),
         onTabSelected: (int index) {
           if (index == 0) {
             HomeProviderCallBack(context).notListener.changeScreen("Home");
@@ -97,7 +98,7 @@ class FABBottomAppBar extends StatefulWidget {
     required this.backgroundColor,
     required this.color,
     required this.selectedColor,
-    required this.notchedShape,
+    // required this.notchedShape,
     required this.onTabSelected,
   }) : super(key: key) {
     assert(this.items.length == 2 || this.items.length == 4);
@@ -109,7 +110,7 @@ class FABBottomAppBar extends StatefulWidget {
   final Color backgroundColor;
   final Color color;
   final Color selectedColor;
-  final NotchedShape notchedShape;
+  // final NotchedShape notchedShape;
   final ValueChanged<int> onTabSelected;
 
   @override
@@ -138,7 +139,7 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
     items.insert(items.length >> 1, _buildMiddleTabItem());
 
     return BottomAppBar(
-      shape: widget.notchedShape,
+      // shape: widget.notchedShape,
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
