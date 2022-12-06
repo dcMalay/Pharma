@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../const.dart';
+import '../../home/components/allproducts.dart';
 import 'category_data.dart';
 
 class Subcategory extends StatefulWidget {
@@ -32,6 +34,14 @@ class _SubcategoryState extends State<Subcategory> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.arrow_back,
+                color: blackColor,
+              )),
           backgroundColor: Colors.white,
           title: Text(
             widget.category,
@@ -51,7 +61,12 @@ class _SubcategoryState extends State<Subcategory> {
                   itemCount: item.length,
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const AllProducts();
+                        }));
+                      },
                       child: Container(
                         height: 60,
                         width: 50,

@@ -59,7 +59,7 @@ class ProductDetails extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 30),
                   child: Center(
                     child: Image.network(
-                      'https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg',
+                      'https://cdn.shopify.com/s/files/1/0272/4714/9155/products/kofflet-syrup-100ml_1024x1024.jpg?v=1622100457',
                       height: 350,
                     ),
                   ),
@@ -68,7 +68,7 @@ class ProductDetails extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 30),
                   child: Center(
                     child: Image.network(
-                      'https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg',
+                      'https://cdn.shopify.com/s/files/1/0272/4714/9155/products/kofflet-syrup-100ml_1024x1024.jpg?v=1622100457',
                       height: 350,
                     ),
                   ),
@@ -77,7 +77,7 @@ class ProductDetails extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 30),
                   child: Center(
                     child: Image.network(
-                      'https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg',
+                      'https://cdn.shopify.com/s/files/1/0272/4714/9155/products/kofflet-syrup-100ml_1024x1024.jpg?v=1622100457',
                       height: 350,
                     ),
                   ),
@@ -86,7 +86,7 @@ class ProductDetails extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 30),
                   child: Center(
                     child: Image.network(
-                      'https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg',
+                      'https://cdn.shopify.com/s/files/1/0272/4714/9155/products/kofflet-syrup-100ml_1024x1024.jpg?v=1622100457',
                       height: 350,
                     ),
                   ),
@@ -105,49 +105,49 @@ class ProductDetails extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: Image.network(
-                    'https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg',
+                    'https://cdn.shopify.com/s/files/1/0272/4714/9155/products/kofflet-syrup-100ml_1024x1024.jpg?v=1622100457',
                     height: 80,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: Image.network(
-                    'https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg',
+                    'https://cdn.shopify.com/s/files/1/0272/4714/9155/products/kofflet-syrup-100ml_1024x1024.jpg?v=1622100457',
                     height: 80,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: Image.network(
-                    'https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg',
+                    'https://cdn.shopify.com/s/files/1/0272/4714/9155/products/kofflet-syrup-100ml_1024x1024.jpg?v=1622100457',
                     height: 80,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: Image.network(
-                    'https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg',
+                    'https://cdn.shopify.com/s/files/1/0272/4714/9155/products/kofflet-syrup-100ml_1024x1024.jpg?v=1622100457',
                     height: 80,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: Image.network(
-                    'https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg',
+                    'https://cdn.shopify.com/s/files/1/0272/4714/9155/products/kofflet-syrup-100ml_1024x1024.jpg?v=1622100457',
                     height: 80,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: Image.network(
-                    'https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg',
+                    'https://cdn.shopify.com/s/files/1/0272/4714/9155/products/kofflet-syrup-100ml_1024x1024.jpg?v=1622100457',
                     height: 80,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: Image.network(
-                    'https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg',
+                    'https://cdn.shopify.com/s/files/1/0272/4714/9155/products/kofflet-syrup-100ml_1024x1024.jpg?v=1622100457',
                     height: 80,
                   ),
                 ),
@@ -170,10 +170,10 @@ class ProductDetails extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.yellow),
-                  child: const Center(child: Text('Ethical')),
+                  child: const Center(child: Text('Syrup')),
                 ),
                 const Text(
-                  "Atorvastatin & Fenofibrate Tablets IP",
+                  "kofflet-syrup-100ml",
                   style: TextStyle(fontSize: 25),
                 ),
                 const SizedBox(

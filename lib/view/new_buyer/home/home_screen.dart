@@ -1,6 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pharma/view/new_buyer/filter_products/filter_products_screen.dart';
 
 import '../notification/notification_screen.dart';
 import 'components/allproducts.dart';
@@ -18,82 +19,70 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          leadingWidth: 0,
+          title: Image.asset(
+            'assets/logo.png',
+            height: 40,
+          ),
+          elevation: 0,
+          backgroundColor: Colors.white,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CircleAvatar(
+                radius: 25,
+                backgroundColor: const Color.fromARGB(255, 227, 227, 255),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: Badge(
+                    badgeContent: const Text(
+                      '1',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    child: const Icon(
+                      Icons.favorite,
+                      size: 30,
+                      color: Color.fromARGB(255, 93, 90, 241),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CircleAvatar(
+                radius: 25,
+                backgroundColor: const Color.fromARGB(255, 227, 227, 255),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return const NotificationScreen();
+                    }));
+                  },
+                  icon: Badge(
+                    badgeContent: const Text(
+                      '1',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    child: const Icon(
+                      Icons.notifications,
+                      size: 30,
+                      color: Color.fromARGB(255, 93, 90, 241),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ]),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(0),
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-              child: Row(children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Hi Ramesh,',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    Text(
-                      'retailerId: #12123',
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 82.0),
-                  child: SizedBox(
-                    height: 60,
-                    width: 130,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        CircleAvatar(
-                          radius: 25,
-                          backgroundColor:
-                              const Color.fromARGB(255, 227, 227, 255),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: Badge(
-                              badgeContent: const Text(
-                                '1',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              child: const Icon(
-                                Icons.favorite,
-                                size: 30,
-                                color: Color.fromARGB(255, 93, 90, 241),
-                              ),
-                            ),
-                          ),
-                        ),
-                        CircleAvatar(
-                          radius: 25,
-                          backgroundColor:
-                              const Color.fromARGB(255, 227, 227, 255),
-                          child: IconButton(
-                            onPressed: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return const NotificationScreen();
-                              }));
-                            },
-                            icon: Badge(
-                              badgeContent: const Text(
-                                '1',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              child: const Icon(
-                                Icons.notifications,
-                                size: 30,
-                                color: Color.fromARGB(255, 93, 90, 241),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              ]),
+            SizedBox(
+              height: 30,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -125,10 +114,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               width: 1.0,
                             ),
                           ),
-                          suffixIcon: Icon(
-                            Icons.camera_enhance,
-                            color: Color.fromARGB(255, 93, 90, 241),
-                          ),
+                          // suffixIcon: Icon(
+                          //   Icons.camera_enhance,
+                          //   color: Color.fromARGB(255, 93, 90, 241),
+                          // ),
                         ),
                       ),
                     ),
@@ -146,7 +135,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Color.fromARGB(255, 93, 90, 241),
                           size: 30,
                         )),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return const FilterProductsScreen();
+                          }));
+                        },
                       ),
                     ),
                   ],
@@ -241,7 +235,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ]),
             ),
-            const ProductCard(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: const ProductCard(),
+            ),
           ],
         ),
       ),

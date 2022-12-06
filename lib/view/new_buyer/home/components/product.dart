@@ -11,40 +11,40 @@ List<Map<String, String>> productDate = [
         "https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg",
     "title": "Tonact 5g tablets",
     "subtitle": "Sold by SLS farm",
-    "MRP": "\$67.19",
-    "PTR": "\$27.18"
+    "MRP": "Rs.67.19",
+    "PTR": "Rs.27.18"
   },
   {
     "imageUrl":
         "https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg",
     "title": "Tonact 5g tablets",
     "subtitle": "Sold by SLS farm",
-    "MRP": "\$67.19",
-    "PTR": "\$27.18"
+    "MRP": "Rs.67.19",
+    "PTR": "Rs.27.18"
   },
   {
     "imageUrl":
         "https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg",
     "title": "Tonact 5g tablets",
     "subtitle": "Sold by SLS farm",
-    "MRP": "\$67.19",
-    "PTR": "\$27.18"
+    "MRP": "Rs.67.19",
+    "PTR": "Rs.27.18"
   },
   {
     "imageUrl":
         "https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg",
     "title": "Tonact 5g tablets",
     "subtitle": "Sold by SLS farm",
-    "MRP": "\$67.19",
-    "PTR": "\$27.18"
+    "MRP": "Rs.67.19",
+    "PTR": "Rs.27.18"
   },
   {
     "imageUrl":
         "https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg",
     "title": "Tonact 5g tablets",
     "subtitle": "Sold by SLS farm",
-    "MRP": "\$67.19",
-    "PTR": "\$27.18"
+    "MRP": "Rs.67.19",
+    "PTR": "Rs.27.18"
   },
 ];
 
