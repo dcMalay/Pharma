@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../const.dart';
+import '../seller_product_details/seller_products_details_screen.dart';
 
 class ProcessOrderView extends StatelessWidget {
   const ProcessOrderView({Key? key}) : super(key: key);
@@ -54,13 +54,13 @@ class ProcessOrderView extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   const Text('₹2345',
                       style: TextStyle(
                           color: blackColor,
                           fontSize: 16,
                           fontWeight: FontWeight.w600)),
-                  const Spacer(),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
@@ -68,7 +68,21 @@ class ProcessOrderView extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: const Center(
-                      child: Text('Confirmed',
+                      child: Text('Accept',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600)),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: const Center(
+                      child: Text('Reject',
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 12,
@@ -80,7 +94,15 @@ class ProcessOrderView extends StatelessWidget {
             ],
           )),
           const SizedBox(width: 10),
-          Icon(Icons.arrow_forward_ios, size: 18, color: primaryColor),
+          InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SellerProductDetails()));
+              },
+              child:
+                  Icon(Icons.arrow_forward_ios, size: 18, color: primaryColor)),
         ],
       ),
     ));

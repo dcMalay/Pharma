@@ -12,7 +12,7 @@ class OrderTab extends StatefulWidget {
 }
 
 class _OrderTabState extends State<OrderTab> {
-  var selectedScreen = "Pending Orders";
+  var selectedScreen = "New Orders";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,22 +32,22 @@ class _OrderTabState extends State<OrderTab> {
                   child: InkWell(
                     onTap: () {
                       setState(() {
-                        selectedScreen = "Pending Orders";
+                        selectedScreen = "New Orders";
                       });
                     },
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: selectedScreen == "Pending Orders"
+                        color: selectedScreen == "New Orders"
                             ? primaryColor
                             : Colors.transparent,
                       ),
                       padding: const EdgeInsets.all(10),
                       child: Center(
-                        child: Text('Pending Orders',
+                        child: Text('New Orders',
                             style: TextStyle(
                                 fontSize: 14,
-                                color: selectedScreen == "Pending Orders"
+                                color: selectedScreen == "New Orders"
                                     ? Colors.white
                                     : primaryColor,
                                 fontWeight: FontWeight.w600)),
@@ -131,7 +131,7 @@ class _OrderTabState extends State<OrderTab> {
               ],
             ),
           ),
-          selectedScreen == "Pending Orders"
+          selectedScreen == "New Orders"
               ? ListView.builder(
                   padding: const EdgeInsets.all(15),
                   itemCount: 4,

@@ -6,6 +6,8 @@ import 'package:pharma/view/buyer/home/home.dart';
 import 'package:pharma/view/help/components/list_card.dart';
 import 'package:remixicon/remixicon.dart';
 
+import '../new_buyer/home.dart';
+
 class HelpPage extends StatelessWidget {
   const HelpPage({Key? key}) : super(key: key);
 
@@ -99,8 +101,12 @@ class HelpPage extends StatelessWidget {
           const Divider(),
           ListTileCard(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => BuyerHomePage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => BuyerHome(
+                              isLoggedIn: true,
+                            )));
               },
               image: 'assets/step4.png',
               title: 'Login As a Buyer',
