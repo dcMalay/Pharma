@@ -10,7 +10,6 @@ import 'package:pharma/provider/home.dart';
 import 'package:pharma/provider/product_search.dart';
 import 'package:pharma/provider/seller.dart';
 import 'package:pharma/provider/stock.dart';
-import 'package:pharma/view/new_buyer/home.dart';
 import 'package:provider/provider.dart';
 
 import 'view/onboarding/welcome.dart';
