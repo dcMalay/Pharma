@@ -52,20 +52,23 @@ class SignUp extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Container(
                 decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          blurRadius: 1,
-                          spreadRadius: 2,
-                          color: primaryColor.withOpacity(0.1))
-                    ],
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(50)),
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 1,
+                      spreadRadius: 2,
+                      color: primaryColor.withOpacity(0.1),
+                    ),
+                  ],
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(50),
+                ),
                 child: TabBar(
                     labelColor: Colors.white,
                     unselectedLabelColor: primaryColor,
                     indicator: BoxDecoration(
-                        color: primaryColor,
-                        borderRadius: BorderRadius.circular(50)),
+                      color: primaryColor,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
                     tabs: [
                       Tab(
                         icon: Row(
@@ -89,7 +92,7 @@ class SignUp extends StatelessWidget {
                             SizedBox(
                               width: 10,
                             ),
-                            Text("GST")
+                            Text("GST"),
                           ],
                         ),
                       ),

@@ -40,7 +40,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     height: 7,
                   ),
                   Text(
-                    '  India’s number one\npharma marketplace',
+                    "India’s number one\npharma marketplace",
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
