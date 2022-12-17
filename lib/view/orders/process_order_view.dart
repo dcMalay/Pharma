@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../const.dart';
 import '../seller_product_details/seller_products_details_screen.dart';
 
-class ProcessOrderView extends StatelessWidget {
-  const ProcessOrderView({Key? key}) : super(key: key);
+class NewOrderView extends StatelessWidget {
+  const NewOrderView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -70,39 +70,49 @@ class ProcessOrderView extends StatelessWidget {
                             return AlertDialog(
                               content: Text('Do you want partial payment ?'),
                               actions: [
-                                Container(
-                                  margin: EdgeInsets.all(10),
-                                  height: 25,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    color: Colors.green,
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: const Center(
-                                    child: Text(
-                                      'Yes',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Container(
+                                    margin: EdgeInsets.all(10),
+                                    height: 25,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: const Center(
+                                      child: Text(
+                                        'Yes',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  height: 25,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: const Center(
-                                    child: Text(
-                                      'No',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Container(
+                                    height: 25,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: const Center(
+                                      child: Text(
+                                        'No',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
                                     ),
                                   ),

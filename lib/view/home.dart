@@ -7,7 +7,6 @@ import 'package:pharma/view/home/home.dart';
 import 'package:pharma/view/orders/order.dart';
 import 'package:pharma/view/settlements/settlement.dart';
 import 'package:pharma/view/stock/new_stock_screen.dart';
-import 'package:pharma/view/stock/stock.dart';
 import 'package:remixicon/remixicon.dart';
 
 class Home extends StatefulWidget {

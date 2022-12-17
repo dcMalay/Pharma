@@ -271,7 +271,7 @@ class _MyProfileState extends State<MyProfile> {
                     color: primaryColor,
                   ),
                   child: Center(
-                    child: Text("Can't Update",
+                    child: Text("Contact admin to update account",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 18,

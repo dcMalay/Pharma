@@ -8,6 +8,7 @@ import 'package:pharma/query/seller/global.dart';
 import 'package:pharma/query/seller/main/create_account.dart';
 import 'package:pharma/query/upload.dart';
 import '../const.dart';
+import '../view/home.dart';
 
 class CreateAccount extends StatefulWidget {
   final String phoneNumber;
@@ -323,6 +324,10 @@ class _CreateAccountState extends State<CreateAccount> {
                   ),
                   InkWell(
                     onTap: () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const Home();
+                      }));
                       if (iAgree) {
                         if (_formKey.currentState!.validate()) {
                           sellerCreateAccountMethod(context, body: {

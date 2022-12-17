@@ -140,7 +140,7 @@ class _OrderTabState extends State<OrderTab> {
                   itemBuilder: (context, index) {
                     return const Padding(
                       padding: EdgeInsets.only(bottom: 5),
-                      child: ProcessOrderView(),
+                      child: NewOrderView(),
                     );
                   },
                 )
