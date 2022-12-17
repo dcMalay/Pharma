@@ -29,10 +29,6 @@ class _WelcomePageState extends State<WelcomePage> {
                     height: 100,
                     width: 100,
                   ),
-                  // CircleAvatar(
-                  //   backgroundColor: Color(0xFFC4C4C4),
-                  //   radius: 50,
-                  // ),
                   SizedBox(
                     height: 10,
                   ),
@@ -44,7 +40,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     height: 7,
                   ),
                   Text(
-                    '  India’s number one\npharma marketplace',
+                    "India’s number one\npharma marketplace",
                     style: TextStyle(fontSize: 16),
                   ),
                 ],

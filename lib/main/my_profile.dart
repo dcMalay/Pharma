@@ -36,7 +36,7 @@ class _MyProfileState extends State<MyProfile> {
   bool iAgree = true;
   @override
   void initState() {
-    getLoad();
+    // getLoad();
     super.initState();
   }
 

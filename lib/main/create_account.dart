@@ -1,24 +1,23 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pharma/callback_provider/seller_login.dart';
 import 'package:pharma/components/outlined_textfield.dart';
-import 'package:pharma/query/gst_pan.dart';
 import 'package:pharma/query/seller/global.dart';
 import 'package:pharma/query/seller/main/create_account.dart';
 import 'package:pharma/query/upload.dart';
-
 import '../const.dart';
 
 class CreateAccount extends StatefulWidget {
   final String phoneNumber;
-  final GstPanResoponse gstPanResponse;
+  final dynamic gstPanResponse;
+  final String type;
   const CreateAccount({
     Key? key,
     required this.gstPanResponse,
     required this.phoneNumber,
+    required this.type,
   }) : super(key: key);
 
   @override
@@ -50,23 +49,40 @@ class _CreateAccountState extends State<CreateAccount> {
   bool iAgree = false;
   @override
   void initState() {
-    // getLoad();
+    getLoad();
     super.initState();
   }
 
   getLoad() {
-    legalNameController.text = widget.gstPanResponse.legalName!;
-    nameController.text = widget.gstPanResponse.legalName!;
-    gstPanNumber.text = widget.gstPanResponse.gstNumber!;
+    print("data --->> ${widget.gstPanResponse.data.data}");
+    legalNameController.text = widget.type == "GST"
+        ? widget.gstPanResponse.data.data.lgnm
+        : widget.gstPanResponse.data.data.response.name;
+    nameController.text = widget.type == "GST"
+        ? widget.gstPanResponse.data.data.lgnm
+        : widget.gstPanResponse.data.data.response.name;
+    gstPanNumber.text =
+        widget.type == "GST" ? widget.gstPanResponse.data.data.gstin : "";
     phoneController.text = widget.phoneNumber;
-    if (widget.gstPanResponse.address != null) {
-      address1Controller.text = widget.gstPanResponse.address!.doorNumber!;
-      stateController.text = widget.gstPanResponse.address!.stateName!;
-      cityController.text = widget.gstPanResponse.address!.dst!;
-      pincodeController.text = widget.gstPanResponse.address!.pincode!;
-      address2Controller.text = widget.gstPanResponse.address!.street! +
-          " " +
-          widget.gstPanResponse.address!.location!;
+    if (widget.type == "GST" &&
+        widget.gstPanResponse.data.data.pradr.addr != null) {
+      address1Controller.text = widget.type == "GST"
+          ? widget.gstPanResponse.data.data.pradr.addr.loc
+          : "";
+      stateController.text = widget.type == "GST"
+          ? widget.gstPanResponse.data.data.pradr.addr.stcd
+          : "";
+      cityController.text = widget.type == "GST"
+          ? widget.gstPanResponse.data.data.pradr.addr.dst
+          : "";
+      pincodeController.text = widget.type == "GST"
+          ? widget.gstPanResponse.data.data.pradr.addr.pncd
+          : "";
+      address2Controller.text = widget.type == "GST"
+          ? widget.gstPanResponse.data.data.pradr.addr.st
+          : "" + " " + widget.type == "GST"
+              ? widget.gstPanResponse.data.data.pradr.addr.bno
+              : "";
     }
   }
 
@@ -360,17 +376,6 @@ class _CreateAccountState extends State<CreateAccount> {
                                   message: value.message.toString());
                             }
                           });
-
-                          // _formKey.currentState!.save();
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) =>
-                          //         CreateAccount2(
-
-                          //         ),
-                          //   ),
-                          // );
                         } else {
                           SellerGlobalHandler.snackBar(
                               isError: true,
@@ -393,11 +398,14 @@ class _CreateAccountState extends State<CreateAccount> {
                         color: primaryColor,
                       ),
                       child: Center(
-                        child: Text("Continue",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700)),
+                        child: Text(
+                          "Continue",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
                       ),
                     ),
                   ),

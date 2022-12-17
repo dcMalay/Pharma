@@ -1,10 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:easy_autocomplete/easy_autocomplete.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:month_picker_dialog_2/month_picker_dialog.dart';
@@ -22,31 +19,7 @@ import 'package:pharma/view/add_stock/type/product_bonus.dart';
 import 'package:pharma/view/buyer/home/model.dart';
 import 'package:provider/provider.dart';
 
-// class AddStock extends StatefulWidget {
-//   const AddStock({Key? key}) : super(key: key);
 
-//   @override
-//   State<AddStock> createState() => _AddStockState();
-// }
-
-// class _AddStockState extends State<AddStock> {
-//   final _formKey = GlobalKey<FormState>();
-
-//   @override
-//   void initState() {
-//     tabList = AllCategoriesModel.fromJson(js);
-
-//     super.initState();
-//   }
-
-//   final ImagePicker _picker = ImagePicker();
-
-//   @override
-//   Widget build(BuildContext context) {
-
-//     return
-//   }
-// }
 
 var _formKey = GlobalKey<FormState>();
 final ImagePicker _picker = ImagePicker();
@@ -161,10 +134,6 @@ class AddStock extends StatelessWidget {
                     suggestions: productName,
                     onChanged: (value) {},
                     onSubmitted: (value) {}),
-                // textfiled(
-                //   onChanged: (p0) {},
-                //   controller: data.productNameController,
-                //   label: "Product Name",
                 // ),
                 const SizedBox(
                   height: 15,
@@ -254,7 +223,6 @@ class AddStock extends StatelessWidget {
                         controller: data.productExpireController,
                         onTap: () {
                           showMonthPicker(
-                            // initialDatePickerMode: DatePickerMode.,
                             yearFirst: true,
                             context: context,
                             initialDate: DateTime.now(),

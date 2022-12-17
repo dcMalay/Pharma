@@ -3,7 +3,6 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:pharma/const.dart';
 import 'package:pharma/query/gst_pan.dart';
 import 'package:pharma/query/seller/global.dart';
-
 import '../create_account.dart';
 
 TextEditingController _controller = TextEditingController();
@@ -45,22 +44,18 @@ class PanScreen extends StatelessWidget {
                 if (_controller.text.length == 10) {
                   context.loaderOverlay.show();
 
-                  getGstPanMethod(context,
-                          userType: "seller",
-                          body: GstPanParams(
-                              gstNumber: "",
-                              typeName: "PAN",
-                              panNumber: _controller.text))
+                  getGstPanMethod(context, 'PAN', _controller.text)
                       .then((value) {
                     if (value != null) {
                       context.loaderOverlay.hide();
 
-                      if (value.status!) {
+                      if (value.data != null) {
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) {
                             return CreateAccount(
                               phoneNumber: phoneNumber,
                               gstPanResponse: value,
+                              type: "PAN",
                             );
                           },
                         ));
@@ -105,7 +100,7 @@ class PanScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10)),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

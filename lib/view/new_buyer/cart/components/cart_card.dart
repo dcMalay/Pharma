@@ -9,40 +9,40 @@ List<Map<String, String>> productDate = [
         "https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg",
     "title": "Tonact 5g tablets",
     "subtitle": "Sold by SLS farm",
-    "MRP": "\$49.99",
-    "PTR": "\$27.18"
+    "MRP": "₹ 49.99",
+    "PTR": "₹ 27.18"
   },
   {
     "imageUrl":
         "https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg",
     "title": "Tonact 5g tablets",
     "subtitle": "Sold by SLS farm",
-    "MRP": "\$49.99",
-    "PTR": "\$27.18"
+    "MRP": "₹ 49.99",
+    "PTR": "₹ 27.18"
   },
   {
     "imageUrl":
         "https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg",
     "title": "Tonact 5g tablets",
     "subtitle": "Sold by SLS farm",
-    "MRP": "\$49.99",
-    "PTR": "\$27.18"
+    "MRP": "₹ 49.99",
+    "PTR": "₹ 27.18"
   },
   {
     "imageUrl":
         "https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg",
     "title": "Tonact 5g tablets",
     "subtitle": "Sold by SLS farm",
-    "MRP": "\$49.99",
-    "PTR": "\$27.18"
+    "MRP": "₹ 49.99",
+    "PTR": "₹ 27.18"
   },
   {
     "imageUrl":
         "https://newassets.apollo247.com/pub/media/catalog/product/t/o/ton0012.jpg",
     "title": "Tonact 5g tablets",
     "subtitle": "Sold by SLS farm",
-    "MRP": "\$49.99",
-    "PTR": "\$27.18"
+    "MRP": "₹ 49.99",
+    "PTR": "₹ 27.18"
   },
 ];
 
@@ -102,20 +102,23 @@ class CartCard extends StatelessWidget {
                       )
                     ],
                   ),
-                  Container(
-                    padding: const EdgeInsets.only(left: 30),
+                  SizedBox(
                     width: 80,
-                    height: 30,
-                    child: CupertinoButton(
-                      padding: const EdgeInsets.all(0),
-                      color: Colors.green,
-                      child: Text(
-                        'Usable',
-                        style: TextStyle(color: Colors.white, fontSize: 10),
-                      ),
-                      onPressed: () {},
-                    ),
                   ),
+                  // Container(
+                  //   padding: const EdgeInsets.only(left: 30),
+                  //   width: 80,
+                  //   height: 30,
+                  //   child: CupertinoButton(
+                  //     padding: const EdgeInsets.all(0),
+                  //     color: Colors.green,
+                  //     child: Text(
+                  //       'Usable',
+                  //       style: TextStyle(color: Colors.white, fontSize: 10),
+                  //     ),
+                  //     onPressed: () {},
+                  //   ),
+                  // ),
                   Container(
                     padding: const EdgeInsets.only(left: 10),
                     width: 80,
@@ -146,7 +149,7 @@ class CartCard extends StatelessWidget {
                       style: TextStyle(fontSize: 12),
                     ),
                     Text(
-                      '\$ 100',
+                      '₹ 100',
                       style: TextStyle(fontSize: 12),
                     ),
                   ],
@@ -180,7 +183,7 @@ class CartCard extends StatelessWidget {
                       style: TextStyle(fontSize: 12),
                     ),
                     Text(
-                      '\$ 70.72',
+                      '₹  70.72',
                       style: TextStyle(fontSize: 12),
                     ),
                   ],
@@ -197,7 +200,7 @@ class CartCard extends StatelessWidget {
                       style: TextStyle(fontSize: 12),
                     ),
                     Text(
-                      '\$0.08',
+                      '₹ 0.08',
                       style: TextStyle(fontSize: 12),
                     ),
                   ],
@@ -214,7 +217,7 @@ class CartCard extends StatelessWidget {
                       style: TextStyle(fontSize: 12),
                     ),
                     Text(
-                      '\$79.21',
+                      '₹ 79.21',
                       style: TextStyle(fontSize: 12),
                     ),
                   ],
@@ -231,7 +234,7 @@ class CartCard extends StatelessWidget {
                       style: TextStyle(fontSize: 12),
                     ),
                     Text(
-                      '\$100 Strip',
+                      '₹ 100 Strip',
                       style: TextStyle(fontSize: 12),
                     ),
                   ],
@@ -248,7 +251,7 @@ class CartCard extends StatelessWidget {
                       style: TextStyle(fontSize: 12),
                     ),
                     Text(
-                      '\$7921.00',
+                      '₹ 7921.00',
                       style: TextStyle(fontSize: 12),
                     ),
                   ],
@@ -275,7 +278,7 @@ class CartCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    width: 150,
+                    width: 195,
                   ),
                   SizedBox(
                     width: 50,

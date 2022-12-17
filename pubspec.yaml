@@ -50,6 +50,8 @@ dependencies:
   easy_autocomplete: ^1.6.0
   badges: ^2.0.3
   quickalert: ^1.0.1
+  flutter_switch: ^0.3.2
+  flutter_screenutil: ^5.6.0
 
 dev_dependencies:
   flutter_test:

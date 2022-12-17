@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pharma/const.dart';
 import 'account/account_screen.dart';
 import 'allcategory/allcategory_screen.dart';
-import 'cart/cart_screen.dart';
+import 'cart/your_bag_screen.dart';
 import 'home/home_screen.dart';
 
 class BuyerHome extends StatefulWidget {

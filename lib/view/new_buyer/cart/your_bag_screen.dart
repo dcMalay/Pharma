@@ -36,7 +36,7 @@ class CartScreen extends StatelessWidget {
             child: ListTile(
               title: Text('Total'),
               trailing: Text(
-                '\$50.98',
+                '₹ 50.98',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -51,7 +51,7 @@ class CartScreen extends StatelessWidget {
               padding: const EdgeInsets.all(0),
               color: const Color.fromARGB(255, 93, 90, 241),
               child: Text(
-                'Proceed to Check Out',
+                'Proceed to Order',
                 style: TextStyle(color: Colors.white),
               ),
               onPressed: () {},

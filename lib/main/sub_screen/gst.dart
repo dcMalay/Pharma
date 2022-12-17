@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:pharma/const.dart';
-
 import '../../query/gst_pan.dart';
 import '../../query/seller/global.dart';
 import '../create_account.dart';
@@ -44,22 +43,18 @@ class GstScreen extends StatelessWidget {
                 if (_controller.text.length == 15) {
                   context.loaderOverlay.show();
 
-                  getGstPanMethod(context,
-                          userType: "seller",
-                          body: GstPanParams(
-                              panNumber: "",
-                              typeName: "GST",
-                              gstNumber: _controller.text))
+                  getGstPanMethod(context, 'GST', _controller.text)
                       .then((value) {
                     if (value != null) {
                       context.loaderOverlay.hide();
-
-                      if (value.status!) {
+                      print("data send to createaccount page--->${value}");
+                      if (value.data != null) {
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) {
                             return CreateAccount(
                               phoneNumber: phoneNumber,
                               gstPanResponse: value,
+                              type: 'GST',
                             );
                           },
                         ));
@@ -69,7 +64,6 @@ class GstScreen extends StatelessWidget {
                             message: value.message!.toString(),
                             isError: true);
                       }
-                      // Navigator.pushNamed(context, '/gst_details');
                     } else {
                       context.loaderOverlay.hide();
 
