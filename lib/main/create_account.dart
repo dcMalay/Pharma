@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pharma/callback_provider/seller_login.dart';
@@ -8,7 +9,6 @@ import 'package:pharma/query/seller/global.dart';
 import 'package:pharma/query/seller/main/create_account.dart';
 import 'package:pharma/query/upload.dart';
 import '../const.dart';
-import '../view/home.dart';
 
 class CreateAccount extends StatefulWidget {
   final String phoneNumber;
@@ -206,13 +206,19 @@ class _CreateAccountState extends State<CreateAccount> {
                   final XFile? image =
                       await _picker.pickImage(source: ImageSource.gallery);
 
-                  var uploadFile =
-                      await imageUpload(context, File(image!.path));
-                  uploaddl20B.text = uploadFile!.resultImage!.location!;
+                  String fileName = image!.path.split('/').last;
+                  FormData data = FormData.fromMap({
+                    "file": await MultipartFile.fromFile(image.path,
+                        filename: fileName),
+                  });
+                  var dataUpload = await postImage(data);
+                  uploaddl20B.text = dataUpload.toString();
+                  print('data ---->$dataUpload');
+                  //  var uploadFile = await imageUpload(context, File(image.path));
+                  // uploaddl20B.text = uploadFile!.resultImage!.location!;
                 },
                 readOnly: true,
                 controller: uploaddl20B,
-                // controller: lic20,
                 hintText: 'Upload D.L. no 20B',
                 placeholderText: "JPG or PNG max Size(1MB)",
               ),
@@ -226,9 +232,16 @@ class _CreateAccountState extends State<CreateAccount> {
                   final XFile? image =
                       await _picker.pickImage(source: ImageSource.gallery);
 
-                  var uploadFile =
-                      await imageUpload(context, File(image!.path));
-                  uploaddl21B.text = uploadFile!.resultImage!.location!;
+                  String fileName = image!.path.split('/').last;
+                  FormData data = FormData.fromMap({
+                    "file": await MultipartFile.fromFile(image.path,
+                        filename: fileName),
+                  });
+                  var dataUpload = await postImage(data);
+                  uploaddl21B.text = dataUpload.toString();
+                  print(dataUpload);
+                  //var uploadFile = await imageUpload(context, File(image.path));
+                  // uploaddl21B.text = uploadFile!.resultImage!.location!;
                 },
                 readOnly: true,
                 controller: uploaddl21B,
@@ -266,9 +279,16 @@ class _CreateAccountState extends State<CreateAccount> {
                   final XFile? image =
                       await _picker.pickImage(source: ImageSource.gallery);
 
-                  var uploadFile =
-                      await imageUpload(context, File(image!.path));
-                  uploaddl20B.text = uploadFile!.resultImage!.location!;
+                  String fileName = image!.path.split('/').last;
+                  FormData data = FormData.fromMap({
+                    "file": await MultipartFile.fromFile(image.path,
+                        filename: fileName),
+                  });
+                  var dataUpload = await postImage(data);
+                  cancelcheck.text = dataUpload.toString();
+                  print(dataUpload);
+                  //var uploadFile = await imageUpload(context, File(image.path));
+                  //uploaddl20B.text = uploadFile!.resultImage!.location!;
                 },
                 readOnly: true,
                 controller: cancelcheck,
@@ -324,10 +344,10 @@ class _CreateAccountState extends State<CreateAccount> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) {
-                        return const Home();
-                      }));
+                      // Navigator.pushReplacement(context,
+                      //     MaterialPageRoute(builder: (context) {
+                      //   return const Home();
+                      // }));
                       if (iAgree) {
                         if (_formKey.currentState!.validate()) {
                           sellerCreateAccountMethod(context, body: {
@@ -346,10 +366,12 @@ class _CreateAccountState extends State<CreateAccount> {
                               "pincode": pincodeController.text,
                             }),
                             "licence": json.encode({
-                              "lic20": lic20.text,
-                              "lic21": lic21.text,
-                              "dl20B_imaage": uploaddl20B.text,
-                              "dl21B_imaage": uploaddl21B.text,
+                              "DL20B": [lic20.text, '2050', uploaddl20B.text],
+                              "DL21B": [lic21.text, '2050', uploaddl21B.text],
+                              // "lic20": lic20.text,
+                              // "lic21": lic21.text,
+                              // "dl20B_imaage": uploaddl20B.text,
+                              // "dl21B_imaage": uploaddl21B.text,
                             }),
                             "band_account": json.encode({
                               "cancelled_cheque": cancelcheck.text,

@@ -1,7 +1,10 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:pharma/query/seller/global.dart';
+
+
+
+
 
 Future<SellerAccountResponse?> sellerCreateAccountMethod(BuildContext context,
     {required Map<String, String>? body}) async {
@@ -12,6 +15,7 @@ Future<SellerAccountResponse?> sellerCreateAccountMethod(BuildContext context,
     var jsonData = jsonDecode(data.body);
 
     SellerAccountResponse response = SellerAccountResponse.fromJson(jsonData);
+    print(response);
     return response;
   } catch (e) {
     SellerGlobalHandler.snackBar(
