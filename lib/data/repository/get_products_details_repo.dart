@@ -1,22 +1,20 @@
 import 'dart:io';
 
-import 'package:pharma/data/model/products_model.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:pharma/query/const.dart';
 
-Future<List<ProductsModel>> getProducts() async {
+import '../model/products_details_model.dart';
+
+Future<ProductsDetailsModel> getProductDetails(productId) async {
   final response = await http.get(
-    Uri.parse('$baseUrl/user/get/10/product/homepage'),
+    Uri.parse('$baseUrl/buyer/un/auth/products/per/$productId'),
     headers: {HttpHeaders.contentTypeHeader: "application/json"},
   );
   print(response.statusCode);
   if (response.statusCode == 200) {
-    List jsonRespone = json.decode(response.body);
-    print('---->$jsonRespone');
-    List<ProductsModel> data =
-        jsonRespone.map((e) => ProductsModel.fromJson(e)).toList();
-    print(">>>>>$data");
+    var jsonRespone = json.decode(response.body);
+    var data = ProductsDetailsModel.fromJson(jsonRespone);
     return data;
   } else {
     throw Exception('getting error');

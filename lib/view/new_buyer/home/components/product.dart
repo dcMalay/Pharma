@@ -72,7 +72,9 @@ class _ProductCardState extends State<ProductCard> {
       child: FutureBuilder<List<ProductsModel>>(
           future: product,
           builder: (context, snapshot) {
+            print(snapshot.data);
             if (snapshot.hasData) {
+              print(snapshot.data);
               List<ProductsModel>? productsData = snapshot.data;
               return ListView.builder(
                   physics: BouncingScrollPhysics(),
@@ -86,7 +88,9 @@ class _ProductCardState extends State<ProductCard> {
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return const ProductDetails();
+                          return ProductDetails(
+                            productId: currentData.id!,
+                          );
                         }));
                       },
                       child: Container(

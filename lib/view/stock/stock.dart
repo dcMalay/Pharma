@@ -134,10 +134,10 @@ class _StockTabState extends State<StockTab> {
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return const ProductDetails();
-                        }));
+                        // Navigator.push(context,
+                        //     MaterialPageRoute(builder: (context) {
+                        //   return const ProductDetails();
+                        // }));
                       },
                       child: Container(
                         height: 130,

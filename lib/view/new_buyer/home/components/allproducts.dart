@@ -121,10 +121,10 @@ class _AllProductsState extends State<AllProducts> {
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return const ProductDetails();
-                        }));
+                        // Navigator.push(context,
+                        //     MaterialPageRoute(builder: (context) {
+                        //   return const ProductDetails();
+                        // }));
                       },
                       child: Container(
                         height: 130,
