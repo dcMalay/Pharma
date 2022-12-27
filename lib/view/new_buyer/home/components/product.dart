@@ -57,7 +57,7 @@ class ProductCard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<ProductCard> {
-  late Future<List<ProductsModel>> product;
+  late Future<List<ProductModel>> product;
 
   @override
   void initState() {
@@ -69,13 +69,13 @@ class _ProductCardState extends State<ProductCard> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 200,
-      child: FutureBuilder<List<ProductsModel>>(
+      child: FutureBuilder<List<ProductModel>>(
           future: product,
           builder: (context, snapshot) {
             print(snapshot.data);
             if (snapshot.hasData) {
               print(snapshot.data);
-              List<ProductsModel>? productsData = snapshot.data;
+              List<ProductModel>? productsData = snapshot.data;
               return ListView.builder(
                   physics: BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
@@ -137,9 +137,15 @@ class _ProductCardState extends State<ProductCard> {
                                           fontSize: 19,
                                         ),
                                       ),
-                                      subtitle: Text(
-                                        currentData.categories!.categoryName!,
-                                        // "${currentItem['subtitle']}",
+                                      subtitle: SizedBox(
+                                        width: 50,
+                                        child: Text(
+                                          currentData.categories!.categoryName!,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          softWrap: false,
+                                          // "${currentItem['subtitle']}",
+                                        ),
                                       )),
                                 )
                               ],

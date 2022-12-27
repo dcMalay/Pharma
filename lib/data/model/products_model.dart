@@ -1,10 +1,5 @@
-
-
-
-
-
-class ProductsModel {
-  ProductsModel({
+class ProductModel {
+  ProductModel({
     this.id,
     this.sellerId,
     this.imageList,
@@ -46,9 +41,9 @@ class ProductsModel {
   int? status;
   int? v;
 
-  factory ProductsModel.fromJson(Map<String, dynamic> json) => ProductsModel(
+  factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
         id: json["_id"],
-        sellerId: sellerIdValues.map[json["seller_id"]],
+        sellerId: sellerIdValues.map[json["seller_id"]]!,
         imageList: List<String>.from(json["image_list"].map((x) => x)),
         productName: json["product_name"],
         productPrice: json["product_price"],
@@ -99,104 +94,106 @@ class Categories {
   });
 
   String? categoryName;
-  SubCategoryName? subCategoryName;
+  String? subCategoryName;
 
   factory Categories.fromJson(Map<String, dynamic> json) => Categories(
         categoryName: json["category_name"],
-        subCategoryName: subCategoryNameValues.map[json["sub_category_name"]],
+        subCategoryName: json["sub_category_name"],
       );
 
   Map<String, dynamic> toJson() => {
         "category_name": categoryName,
-        "sub_category_name": subCategoryNameValues.reverse[subCategoryName],
+        "sub_category_name": subCategoryName,
       };
 }
-
-enum SubCategoryName {
-  SUPPOSITORIES,
-  THE_6368_D5_E32_A9_C09_D50_DE42137,
-  CREAMS
-}
-
-final subCategoryNameValues = EnumValues({
-  "creams": SubCategoryName.CREAMS,
-  "Suppositories": SubCategoryName.SUPPOSITORIES,
-  "6368d5e32a9c09d50de42137": SubCategoryName.THE_6368_D5_E32_A9_C09_D50_DE42137
-});
 
 class DiscountDetails {
   DiscountDetails({
     this.status,
     this.type,
     this.finalPtr,
-    this.bonus,
-    this.perPtr,
+    this.discount,
+    this.discountValue,
     this.ptr,
+    this.perPtr,
     this.gst,
     this.gstValue,
     this.retailPercentage,
     this.finalUserBuy,
     this.finalOrderValue,
     this.message,
-    this.discount,
-    this.discountValue,
+    this.bonus,
+    this.bonusGet,
+    this.productName,
   });
 
   bool? status;
   Type? type;
   dynamic finalPtr;
-  int? bonus;
-  dynamic perPtr;
+  dynamic discount;
+  String? discountValue;
   dynamic ptr;
+  dynamic perPtr;
   dynamic gst;
   dynamic gstValue;
   dynamic retailPercentage;
   dynamic finalUserBuy;
   dynamic finalOrderValue;
   String? message;
-  dynamic? discount;
-  String? discountValue;
+  dynamic bonus;
+  String? bonusGet;
+  String? productName;
 
   factory DiscountDetails.fromJson(Map<String, dynamic> json) =>
       DiscountDetails(
         status: json["status"],
-        type: typeValues.map[json["type"]],
+        type: typeValues.map[json["type"]]!,
         finalPtr: json["final_ptr"],
-        bonus: json["bonus"] == null ? null : json["bonus"],
-        perPtr: json["per_ptr"],
+        discount: json["discount"],
+        discountValue:
+            json["discount_value"] == null ? null : json["discount_value"],
         ptr: json["ptr"],
+        perPtr: json["per_ptr"],
         gst: json["gst"],
         gstValue: json["gst_value"],
         retailPercentage: json["retail_percentage"],
         finalUserBuy: json["final_user_buy"],
         finalOrderValue: json["final_order_value"],
         message: json["message"],
-        discount: json["discount"],
-        discountValue:
-            json["discount_value"] == null ? null : json["discount_value"],
+        bonus: json["bonus"],
+        bonusGet: json["bonus_get"] == null ? null : json["bonus_get"],
+        productName: json["product_name"] == null ? null : json["product_name"],
       );
 
   Map<String, dynamic> toJson() => {
         "status": status,
         "type": typeValues.reverse[type],
         "final_ptr": finalPtr,
-        "bonus": bonus == null ? null : bonus,
-        "per_ptr": perPtr,
+        "discount": discount,
+        "discount_value": discountValue == null ? null : discountValue,
         "ptr": ptr,
+        "per_ptr": perPtr,
         "gst": gst,
         "gst_value": gstValue,
         "retail_percentage": retailPercentage,
         "final_user_buy": finalUserBuy,
         "final_order_value": finalOrderValue,
         "message": message,
-        "discount": discount,
-        "discount_value": discountValue == null ? null : discountValue,
+        "bonus": bonus,
+        "bonus_get": bonusGet == null ? null : bonusGet,
+        "product_name": productName == null ? null : productName,
       };
 }
 
-enum Type { SAME_PRODUCT_BONUS, PTR_DISCOUNT }
+enum Type {
+  PTR_DISCOUNT,
+  DIFFERENT_PTR_DISCOUNT_AND_SAME_PRODUCT_BONUS,
+  SAME_PRODUCT_BONUS
+}
 
 final typeValues = EnumValues({
+  "different_ptr_discount_and_same_product_bonus":
+      Type.DIFFERENT_PTR_DISCOUNT_AND_SAME_PRODUCT_BONUS,
   "ptr_discount": Type.PTR_DISCOUNT,
   "same_product_bonus": Type.SAME_PRODUCT_BONUS
 });
@@ -204,49 +201,49 @@ final typeValues = EnumValues({
 class DiscountFormDetails {
   DiscountFormDetails({
     this.gstPercentage,
-    this.discountFormDetailsGet,
-    this.buy,
     this.mrp,
-    this.minQtySale,
-    this.maxQtySale,
-    this.userBuy,
-    this.discountOnPtrOnlyPercenatge,
+    this.buy,
+    this.discountFormDetailsGet,
     this.producName,
+    this.maxQtySale,
+    this.minQtySale,
+    this.discountOnPtrOnlyPercenatge,
+    this.userBuy,
   });
 
   dynamic gstPercentage;
-  dynamic discountFormDetailsGet;
-  dynamic buy;
   dynamic mrp;
-  dynamic minQtySale;
-  dynamic maxQtySale;
-  dynamic userBuy;
-  dynamic discountOnPtrOnlyPercenatge;
+  dynamic buy;
+  dynamic discountFormDetailsGet;
   String? producName;
+  dynamic maxQtySale;
+  dynamic minQtySale;
+  dynamic discountOnPtrOnlyPercenatge;
+  dynamic userBuy;
 
   factory DiscountFormDetails.fromJson(Map<String, dynamic> json) =>
       DiscountFormDetails(
         gstPercentage: json["gstPercentage"],
-        discountFormDetailsGet: json["get"],
-        buy: json["buy"],
         mrp: json["mrp"],
-        minQtySale: json["minQtySale"],
-        maxQtySale: json["maxQtySale"],
-        userBuy: json["userBuy"],
-        discountOnPtrOnlyPercenatge: json["discountOnPtrOnlyPercenatge"],
+        buy: json["buy"],
+        discountFormDetailsGet: json["get"],
         producName: json["producName"] == null ? null : json["producName"],
+        maxQtySale: json["maxQtySale"],
+        minQtySale: json["minQtySale"],
+        discountOnPtrOnlyPercenatge: json["discountOnPtrOnlyPercenatge"],
+        userBuy: json["userBuy"],
       );
 
   Map<String, dynamic> toJson() => {
         "gstPercentage": gstPercentage,
-        "get": discountFormDetailsGet,
-        "buy": buy,
         "mrp": mrp,
-        "minQtySale": minQtySale,
-        "maxQtySale": maxQtySale,
-        "userBuy": userBuy,
-        "discountOnPtrOnlyPercenatge": discountOnPtrOnlyPercenatge,
+        "buy": buy,
+        "get": discountFormDetailsGet,
         "producName": producName == null ? null : producName,
+        "maxQtySale": maxQtySale,
+        "minQtySale": minQtySale,
+        "discountOnPtrOnlyPercenatge": discountOnPtrOnlyPercenatge,
+        "userBuy": userBuy,
       };
 }
 
@@ -272,13 +269,11 @@ class ExtraFieldClass {
 }
 
 enum SellerId {
-  THE_636477702052_F42_B834_D3235,
   THE_635_FFB05_A04_EDCADE2_D5_B37_E,
-  THE_62_D1422148_E674_B49_C833_DB2
+  THE_636477702052_F42_B834_D3235
 }
 
 final sellerIdValues = EnumValues({
-  "62d1422148e674b49c833db2": SellerId.THE_62_D1422148_E674_B49_C833_DB2,
   "635ffb05a04edcade2d5b37e": SellerId.THE_635_FFB05_A04_EDCADE2_D5_B37_E,
   "636477702052f42b834d3235": SellerId.THE_636477702052_F42_B834_D3235
 });
