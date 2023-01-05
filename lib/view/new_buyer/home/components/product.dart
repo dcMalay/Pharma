@@ -57,7 +57,7 @@ class ProductCard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<ProductCard> {
-  late Future<List<ProductModel>> product;
+  late Future<List<dynamic>> product;
 
   @override
   void initState() {
@@ -69,13 +69,13 @@ class _ProductCardState extends State<ProductCard> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 200,
-      child: FutureBuilder<List<ProductModel>>(
+      child: FutureBuilder<List<dynamic>>(
           future: product,
           builder: (context, snapshot) {
             print(snapshot.data);
             if (snapshot.hasData) {
               print(snapshot.data);
-              List<ProductModel>? productsData = snapshot.data;
+              List<dynamic>? productsData = snapshot.data;
               return ListView.builder(
                   physics: BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
@@ -83,13 +83,13 @@ class _ProductCardState extends State<ProductCard> {
                   itemBuilder: (context, index) {
                     // var currentItem = productDate[index];
                     var currentData = productsData[index];
-
+                    print('dataFROM---->>${currentData["image_list"]}');
                     return InkWell(
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
                           return ProductDetails(
-                            productId: currentData.id!,
+                            productId: currentData['_id'],
                           );
                         }));
                       },
@@ -110,11 +110,9 @@ class _ProductCardState extends State<ProductCard> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                currentData.imageList!.isNotEmpty
+                                currentData["image_list"][index] != null
                                     ? Image.network(
-                                        currentData.imageList!.first,
-
-                                        // "${currentItem['imageUrl']}",
+                                        currentData["image_list"][0],
                                         height: 60,
                                       )
                                     : Container(
@@ -128,7 +126,7 @@ class _ProductCardState extends State<ProductCard> {
                                   width: 180,
                                   child: ListTile(
                                       title: Text(
-                                        currentData.productName!,
+                                        currentData["product_name"],
                                         // "${currentItem['title']}",
                                         style: const TextStyle(
                                           color:
@@ -140,7 +138,8 @@ class _ProductCardState extends State<ProductCard> {
                                       subtitle: SizedBox(
                                         width: 50,
                                         child: Text(
-                                          currentData.categories!.categoryName!,
+                                          currentData['categories']
+                                              ['category_name'],
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                           softWrap: false,
@@ -167,7 +166,7 @@ class _ProductCardState extends State<ProductCard> {
                                       ),
                                     ),
                                     Text(
-                                      currentData.productPrice.toString(),
+                                      currentData['product_price'].toString(),
                                     )
                                   ],
                                 ),
@@ -184,7 +183,8 @@ class _ProductCardState extends State<ProductCard> {
                                     SizedBox(
                                       width: 50,
                                       child: Text(
-                                        currentData.discountDetails!.finalPtr
+                                        currentData['discount_details']
+                                                ['final_ptr']
                                             .toString(),
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,

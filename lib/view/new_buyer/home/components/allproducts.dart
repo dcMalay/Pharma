@@ -15,7 +15,7 @@ class AllProducts extends StatefulWidget {
 }
 
 class _AllProductsState extends State<AllProducts> {
-  late Future<List<ProductModel>> product;
+  late Future<List<dynamic>> product;
 
   @override
   void initState() {
@@ -62,11 +62,11 @@ class _AllProductsState extends State<AllProducts> {
           ),
         ],
       ),
-      body: FutureBuilder<List<ProductModel>>(
+      body: FutureBuilder<List<dynamic>>(
           future: product,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              List<ProductModel>? productsData = snapshot.data;
+              List<dynamic>? productsData = snapshot.data;
 
               return SingleChildScrollView(
                 child: Column(
@@ -147,7 +147,7 @@ class _AllProductsState extends State<AllProducts> {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
                                   return ProductDetails(
-                                    productId: currentData.id!,
+                                    productId: currentData['_id'],
                                   );
                                 }));
                               },
@@ -165,9 +165,9 @@ class _AllProductsState extends State<AllProducts> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Center(
-                                      child: currentData.imageList!.isNotEmpty
+                                      child: currentData["image_list"] != null
                                           ? Image.network(
-                                              currentData.imageList![index],
+                                              currentData["image_list"][0],
                                               height: 60,
                                             )
                                           : Container(
@@ -181,7 +181,7 @@ class _AllProductsState extends State<AllProducts> {
                                     const SizedBox(
                                       height: 20,
                                     ),
-                                    Text(currentData.productName!),
+                                    Text(currentData['product_name']),
                                     const SizedBox(
                                       height: 30,
                                     ),
@@ -192,7 +192,7 @@ class _AllProductsState extends State<AllProducts> {
                                         SizedBox(
                                           width: 60,
                                           child: Text(
-                                            'PTR:${currentData.discountDetails!.perPtr}',
+                                            'PTR:${currentData['discount_details']['per_ptr']}',
                                             style: TextStyle(
                                               fontSize: 12,
                                               color: Colors.grey,
@@ -205,7 +205,7 @@ class _AllProductsState extends State<AllProducts> {
                                         SizedBox(
                                           width: 70,
                                           child: Text(
-                                            'MRP:${currentData.productPrice}',
+                                            'MRP:${currentData['product_price']}',
                                             style: TextStyle(
                                               fontSize: 12,
                                               color: Colors.grey,
