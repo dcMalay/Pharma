@@ -3,7 +3,6 @@ import 'package:pharma/const.dart';
 import 'package:pharma/main/verify.dart';
 import 'package:pharma/query/seller/global.dart';
 import 'package:pharma/query/seller/main/login.dart';
-import '../view/home.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);

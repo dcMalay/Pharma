@@ -1,5 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:remixicon/remixicon.dart';
+
 import 'package:pharma/const.dart';
 import 'package:pharma/provider/home.dart';
 import 'package:pharma/view/add_stock/add_stock.dart';
@@ -7,16 +10,31 @@ import 'package:pharma/view/home/home.dart';
 import 'package:pharma/view/orders/order.dart';
 import 'package:pharma/view/settlements/settlement.dart';
 import 'package:pharma/view/stock/new_stock_screen.dart';
-import 'package:remixicon/remixicon.dart';
+
+import '../query/seller/global.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
-
+  const Home({
+    Key? key,
+    required this.authToken,
+  }) : super(key: key);
+  final String authToken;
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  late String authToken;
+  @override
+  void initState() {
+    SellerGlobalHandler.getToken().then((value) {
+      authToken = value!;
+      print(authToken);
+    });
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +48,9 @@ class _HomeState extends State<Home> {
                   ? const OrderTab()
                   : HomeProviderCallBack(context).listener.selectedScreen ==
                           "Stocks"
-                      ? const NewStockScreen()
+                      ? NewStockScreen(
+                          authToken: authToken,
+                        )
                       : HomeProviderCallBack(context).listener.selectedScreen ==
                               "Add Stock"
                           ? AddStock()

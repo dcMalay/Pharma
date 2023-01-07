@@ -25,7 +25,9 @@ class SellerLoginCallBack {
               true) {
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) {
-              return const Home();
+              return Home(
+                authToken: token,
+              );
             }));
           } else {
             Navigator.pushReplacement(context,

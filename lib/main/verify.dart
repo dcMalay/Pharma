@@ -43,12 +43,12 @@ class _VerifyState extends State<Verify> {
                 if (res != null) {
                   if (res.status == 200) {
                     if (res.isUserFound == 1) {
-                      Navigator.pop(context);
-                      Navigator.pop(context);
                       SellerGlobalHandler.setToken(res.authToken!);
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) {
-                        return const Home();
+                        return Home(
+                          authToken: res.authToken!,
+                        );
                       }));
                     } else {
                       SellerGlobalHandler.setToken(res.authToken!);
