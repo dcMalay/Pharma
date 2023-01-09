@@ -5,6 +5,7 @@ import 'package:pharma/data/repository/get_products_repo.dart';
 import 'package:pharma/view/new_buyer/home/components/productdetails.dart';
 import 'package:quickalert/quickalert.dart';
 import '../../../../const.dart';
+import '../../../../data/repository/add_to_cart_repo.dart';
 
 List<Map<String, String>> productDate = [
   {
@@ -211,6 +212,11 @@ class _ProductCardState extends State<ProductCard> {
                                         text:
                                             'Product successfully added to your bag',
                                       );
+                                      addtoCart(
+                                          currentData['_id'],
+                                          '1',
+                                          currentData['product_price']
+                                              .toString());
                                     },
                                   ),
                                 )
