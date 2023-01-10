@@ -18,6 +18,21 @@ Future<VerifyResponse?> verifyOtpMethod(BuildContext context,
   }
 }
 
+Future<VerifyResponse?> verifybuyerOtpMethod(BuildContext context,
+    {required VerifyParams body}) async {
+  try {
+    // print(body.toJson());
+    var data = await SellerGlobalHandler.requestPost(
+        '/buyer/un/auth/verify', body.toJson());
+    var jsonData = jsonDecode(data.body);
+    VerifyResponse response = VerifyResponse.fromJson(jsonData);
+    // print(response.toJson());
+    return response;
+  } catch (e) {
+    return null;
+  }
+}
+
 class VerifyParams {
   String? phoneNo;
   String? otp;

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:pharma/const.dart';
-import 'package:pharma/query/buyer/global.dart';
-import 'package:pharma/query/buyer/main/login.dart';
-import 'package:pharma/view/buyer/main/verify.dart';
 import 'package:pharma/view/new_buyer/home.dart';
+import '../../../main/verify.dart';
+import '../../../query/buyer/global.dart';
+import '../../../query/seller/global.dart';
+import '../../../query/seller/main/login.dart';
+import '../../new_buyer/authentication/buyer_verify.dart';
 
 // ignore: must_be_immutable
 class BuyerLogin extends StatelessWidget {
@@ -29,42 +31,37 @@ class BuyerLogin extends StatelessWidget {
       //     children: [
       //       InkWell(
       //         onTap: () {
-      //           Navigator.push(context, MaterialPageRoute(
-      //             builder: (context) {
-      //               return BuyerHome();
-      //             },
-      //           ));
-      //           // sendOtpMethod(context,
-      //           //     body: LoginParams(country: "", phoneNo: ""));
-      //           // if (phoneeNo.text.length == 10) {
-      //           //   buyerSendOtpMethod(context,
-      //           //           body:
-      //           //               LoginParams(country: "", phoneNo: phoneeNo.text))
-      //           //       .then((value) {
-      //           //     if (value!.status == 200) {
-      //           //       BuyerGlobalHandler.snackBar(
-      //           //           context: context,
-      //           //           isSuccess: true,
-      //           //           message: value.message!.toString());
-      //           //       Navigator.push(
-      //           //           context,
-      //           //           MaterialPageRoute(
-      //           //               builder: (context) => BuyerVerify(
-      //           //                     phoneNo: phoneeNo.text,
-      //           //                   )));
-      //           //     } else {
-      //           //       BuyerGlobalHandler.snackBar(
-      //           //           context: context,
-      //           //           isError: true,
-      //           //           message: value.message!.toString());
-      //           //     }
-      //           //   });
-      //           // } else {
-      //           //   BuyerGlobalHandler.snackBar(
-      //           //       context: context,
-      //           //       isError: true,
-      //           //       message: "Please enter 10 digit phone number");
-      //           // }
+      //           sendOtpMethod(context,
+      //               body: LoginParams(country: "", phoneNo: ""));
+      //           if (phoneeNo.text.length == 10) {
+      //             buyerSendOtpMethod(context,
+      //                     body:
+      //                         LoginParams(country: "", phoneNo: phoneeNo.text))
+      //                 .then((value) {
+      //               if (value!.status == 200) {
+      //                 BuyerGlobalHandler.snackBar(
+      //                     context: context,
+      //                     isSuccess: true,
+      //                     message: value.message!.toString());
+      //                 Navigator.push(
+      //                     context,
+      //                     MaterialPageRoute(
+      //                         builder: (context) => BuyerVerify(
+      //                               phoneNo: phoneeNo.text,
+      //                             )));
+      //               } else {
+      //                 BuyerGlobalHandler.snackBar(
+      //                     context: context,
+      //                     isError: true,
+      //                     message: value.message!.toString());
+      //               }
+      //             });
+      //           } else {
+      //             BuyerGlobalHandler.snackBar(
+      //                 context: context,
+      //                 isError: true,
+      //                 message: "Please enter 10 digit phone number");
+      //           }
       //         },
       //         child: Container(
       //           padding: EdgeInsets.all(10),
@@ -131,13 +128,39 @@ class BuyerLogin extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
-                    return BuyerHome(
-                      isLoggedIn: true,
-                    );
-                  },
-                ));
+                print('otp button tapped ');
+                if (phoneeNo.text.length == 10) {
+                  sendbuyerOtpMethod(context,
+                          body:
+                              LoginParams(country: "", phoneNo: phoneeNo.text))
+                      .then((value) {
+                    print('value from buyer --->$value');
+                    if (value!.status == 200) {
+                      print('otp button tapped ${value.otp}');
+                      BuyerGlobalHandler.snackBar(
+                          context: context,
+                          isSuccess: true,
+                          message: value.message!.toString());
+
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => BuyerVerify(
+                                    phoneNo: phoneeNo.text,
+                                  )));
+                    } else {
+                      BuyerGlobalHandler.snackBar(
+                          context: context,
+                          isError: true,
+                          message: value.message!.toString());
+                    }
+                  });
+                } else {
+                  BuyerGlobalHandler.snackBar(
+                      context: context,
+                      isError: true,
+                      message: "Please enter 10 digit phone number");
+                }
                 // sendOtpMethod(context,
                 //     body: LoginParams(country: "", phoneNo: ""));
                 // if (phoneeNo.text.length == 10) {

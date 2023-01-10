@@ -33,10 +33,6 @@ class _LoginState extends State<Login> {
           children: [
             InkWell(
               onTap: () {
-                // Navigator.pushReplacement(context,
-                //     MaterialPageRoute(builder: (context) {
-                //   return const Home();
-                // }));
                 if (phoneeNo.text.length == 10) {
                   print('otp button tapped ');
                   sendOtpMethod(context,

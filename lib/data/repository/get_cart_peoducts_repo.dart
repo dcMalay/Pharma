@@ -2,11 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:pharma/query/const.dart';
-
-import '../../query/seller/global.dart';
+import '../../query/buyer/global.dart';
 
 Future<List<dynamic>> getbagProducts() async {
-  final String? authToken = await SellerGlobalHandler.getToken();
+  final String? authToken = await BuyerGlobalHandler.getToken();
   final response = await http.get(
     Uri.parse('$baseUrl/buyer/auth/cart'),
     headers: {
