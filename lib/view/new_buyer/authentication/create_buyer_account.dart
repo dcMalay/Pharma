@@ -1,20 +1,19 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:pharma/callback_provider/seller_login.dart';
 import 'package:pharma/components/outlined_textfield.dart';
-import 'package:pharma/query/seller/global.dart';
 import 'package:pharma/query/seller/main/create_account.dart';
 import 'package:pharma/query/upload.dart';
-import '../const.dart';
+import '../../../callback_provider/buyer_login.dart';
+import '../../../const.dart';
+import '../../../query/buyer/global.dart';
 
-class CreateAccount extends StatefulWidget {
+class CreateBuyerAccount extends StatefulWidget {
   final String phoneNumber;
   final dynamic gstPanResponse;
   final String type;
-  const CreateAccount({
+  const CreateBuyerAccount({
     Key? key,
     required this.gstPanResponse,
     required this.phoneNumber,
@@ -22,10 +21,10 @@ class CreateAccount extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<CreateAccount> createState() => _CreateAccountState();
+  State<CreateBuyerAccount> createState() => _CreateBuyerAccountState();
 }
 
-class _CreateAccountState extends State<CreateAccount> {
+class _CreateBuyerAccountState extends State<CreateBuyerAccount> {
   TextEditingController legalNameController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController address1Controller = TextEditingController();
@@ -97,7 +96,7 @@ class _CreateAccountState extends State<CreateAccount> {
         leading: BackButton(
           color: blackColor,
         ),
-        title: Text('Seller Account', style: TextStyle(color: blackColor)),
+        title: Text('Buyer Account', style: TextStyle(color: blackColor)),
         centerTitle: true,
         backgroundColor: Colors.white,
         // elevation: 0.0,
@@ -350,7 +349,7 @@ class _CreateAccountState extends State<CreateAccount> {
                       // }));
                       if (iAgree) {
                         if (_formKey.currentState!.validate()) {
-                          sellerCreateAccountMethod(context, body: {
+                          buyerCreateAccountMethod(context, body: {
                             "gst_pan_response":
                                 json.encode(widget.gstPanResponse.toJson()),
                             "name": nameController.text,
@@ -383,34 +382,32 @@ class _CreateAccountState extends State<CreateAccount> {
                             "invite_code": inviteCode.text,
                           }).then((value) {
                             if (value == null) {
-                              SellerGlobalHandler.snackBar(
+                              BuyerGlobalHandler.snackBar(
                                   context: context,
                                   isError: true,
                                   message: "Something went wrong");
                             } else if (value.status == 200) {
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                              SellerGlobalHandler.snackBar(
+                              BuyerGlobalHandler.snackBar(
                                   context: context,
                                   isSuccess: true,
                                   message: value.message.toString());
 
-                              SellerLoginCallBack.onChechkingAccount(context);
+                              BuyerLoginCallBack.onChechkingAccount(context);
                             } else {
-                              SellerGlobalHandler.snackBar(
+                              BuyerGlobalHandler.snackBar(
                                   context: context,
                                   isError: true,
                                   message: value.message.toString());
                             }
                           });
                         } else {
-                          SellerGlobalHandler.snackBar(
+                          BuyerGlobalHandler.snackBar(
                               isError: true,
                               context: context,
                               message: "This field is required");
                         }
                       } else {
-                        SellerGlobalHandler.snackBar(
+                        BuyerGlobalHandler.snackBar(
                             isError: true,
                             context: context,
                             message:

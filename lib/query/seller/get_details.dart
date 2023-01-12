@@ -6,7 +6,9 @@ import 'package:pharma/query/seller/global.dart';
 
 Future<GetSellerDetails?> getSellerDetailsMethod(BuildContext context) async {
   try {
-    var data = await SellerGlobalHandler.requestGet('/seller/auth/profile');
+    // var data = await SellerGlobalHandler.requestGet('/seller/auth/profile');
+    var data = await SellerGlobalHandler.requestGet(
+        '/seller/seller_auth/seller_details/get_details');
 
     var jsonData = jsonDecode(data.body);
 

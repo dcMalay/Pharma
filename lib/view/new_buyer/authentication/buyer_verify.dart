@@ -6,15 +6,19 @@ import 'package:pharma/query/seller/main/login.dart';
 import 'package:pharma/query/seller/main/verify.dart';
 import 'package:pharma/view/home.dart';
 
-class Verify extends StatefulWidget {
+import '../../../query/buyer/global.dart';
+import '../home.dart';
+import 'buyer_signup.dart';
+
+class BuyerVerify extends StatefulWidget {
   final String phoneNo;
-  const Verify({Key? key, required this.phoneNo}) : super(key: key);
+  const BuyerVerify({Key? key, required this.phoneNo}) : super(key: key);
 
   @override
-  State<Verify> createState() => _VerifyState();
+  State<BuyerVerify> createState() => _BuyerVerifyState();
 }
 
-class _VerifyState extends State<Verify> {
+class _BuyerVerifyState extends State<BuyerVerify> {
   TextEditingController otp = TextEditingController();
 
   @override
@@ -37,34 +41,34 @@ class _VerifyState extends State<Verify> {
           children: [
             InkWell(
               onTap: () async {
-                var res = await verifyOtpMethod(context,
+                var res = await verifybuyerOtpMethod(context,
                     body: VerifyParams(
                         country: '', otp: otp.text, phoneNo: widget.phoneNo));
                 if (res != null) {
                   if (res.status == 200) {
                     if (res.isUserFound == 1) {
-                      SellerGlobalHandler.setToken(res.authToken!);
+                      BuyerGlobalHandler.setToken(res.authToken!);
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) {
-                        return Home(
-                          authToken: res.authToken!,
+                        return BuyerHome(
+                          isLoggedIn: true,
                         );
                       }));
                     } else {
-                      SellerGlobalHandler.setToken(res.authToken!);
+                      BuyerGlobalHandler.setToken(res.authToken!);
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) {
-                        return SignUp(
+                        return BuyerSignUp(
                           phoneNumber: widget.phoneNo,
                         );
                       }));
                     }
                   } else {
-                    SellerGlobalHandler.snackBar(
+                    BuyerGlobalHandler.snackBar(
                         context: context, message: res.message!, isError: true);
                   }
                 } else {
-                  SellerGlobalHandler.snackBar(
+                  BuyerGlobalHandler.snackBar(
                       context: context,
                       message: "Internal Problem",
                       isError: true);
@@ -94,19 +98,19 @@ class _VerifyState extends State<Verify> {
                                 country: "", phoneNo: widget.phoneNo))
                         .then((value) {
                       if (value!.status == 200) {
-                        SellerGlobalHandler.snackBar(
+                        BuyerGlobalHandler.snackBar(
                             context: context,
                             isSuccess: true,
                             message: value.message!.toString());
                       } else {
-                        SellerGlobalHandler.snackBar(
+                        BuyerGlobalHandler.snackBar(
                             context: context,
                             isError: true,
                             message: value.message!.toString());
                       }
                     });
                   } else {
-                    SellerGlobalHandler.snackBar(
+                    BuyerGlobalHandler.snackBar(
                         context: context,
                         isError: true,
                         message: "Please enter 10 digit phone number");
@@ -143,7 +147,7 @@ class _VerifyState extends State<Verify> {
             SizedBox(
               height: 20,
             ),
-            Text("One TIme Password",
+            Text("One Time Password",
                 style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w500,

@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
         "differentbonus"
-    ]
+    ],
+    "cmake.sourceDirectory": "${workspaceFolder}/linux"
 }

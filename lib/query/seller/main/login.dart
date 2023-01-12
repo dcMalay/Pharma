@@ -21,6 +21,24 @@ Future<LoginResponse?> sendOtpMethod(BuildContext context,
   }
 }
 
+Future<LoginResponse?> sendbuyerOtpMethod(BuildContext context,
+    {required LoginParams body}) async {
+  print(body.phoneNo);
+  try {
+    var data = await SellerGlobalHandler.requestPost(
+        '/buyer/un/auth/phone', body.toJson());
+
+    var jsonData = jsonDecode(data.body);
+    LoginResponse response = LoginResponse.fromJson(jsonData);
+    print(response.toJson());
+    return response;
+  } catch (e) {
+    SellerGlobalHandler.snackBar(
+        context: context, message: e.toString(), isError: true);
+    return null;
+  }
+}
+
 class LoginParams {
   String? phoneNo;
   String? country;

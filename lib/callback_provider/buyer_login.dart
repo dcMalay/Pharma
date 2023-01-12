@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:pharma/callback_provider/buyer.dart';
-import 'package:pharma/callback_provider/seller.dart';
 import 'package:pharma/main/login.dart';
 import 'package:pharma/query/buyer/global.dart';
 import 'package:pharma/query/seller/global.dart';
 import 'package:pharma/view/buyer/home/home.dart';
 import 'package:pharma/view/buyer/main/login.dart';
-import 'package:pharma/view/home.dart';
 import 'package:pharma/view/onboarding/welcome.dart';
+import '../view/new_buyer/home.dart';
 
-class SellerLoginCallBack {
+
+
+class BuyerLoginCallBack {
   static Future<void> onChechkingAccount(context) async {
-    var isLogged = await SellerGlobalHandler.checkLogedin();
+    var isLogged = await BuyerGlobalHandler.checkLogedin();
 
     if (isLogged) {
-      var token = await SellerGlobalHandler.getToken();
+      var token = await BuyerGlobalHandler.getToken();
       print(token);
       if (token != null) {
-        await SellerCallBack(context)
-            .sellerProviderWithoutLisner
+        await BuyerCallBack(context)
+            .buyerProviderWithoutLisner
             .getUser(context);
-        if (SellerCallBack(context).getSellerDetails != null) {
-          if (SellerCallBack(context).getSellerDetails!.isAccountFound! ==
-              true) {
+        if (BuyerCallBack(context).getBuyDetails != null) {
+          if (BuyerCallBack(context).getBuyDetails!.isAccountFound! == true) {
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) {
-              return Home(
-                authToken: token,
+              return BuyerHome(
+                isLoggedIn: true,
               );
             }));
           } else {
@@ -44,10 +44,10 @@ class SellerLoginCallBack {
           }));
         }
       } else {
-        SellerLoginCallBack().onCheckAccountBuyer(context);
+        BuyerLoginCallBack().onCheckAccountBuyer(context);
       }
     } else {
-      SellerLoginCallBack().onCheckAccountBuyer(context);
+      BuyerLoginCallBack().onCheckAccountBuyer(context);
     }
   }
 
@@ -73,7 +73,7 @@ class SellerLoginCallBack {
               }));
             }
           } else {
-            SellerGlobalHandler.snackBar(
+            BuyerGlobalHandler.snackBar(
                 context: context, message: "Session Expire", isWarning: true);
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) {

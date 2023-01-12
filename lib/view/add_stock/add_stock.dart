@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:easy_autocomplete/easy_autocomplete.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -19,16 +20,57 @@ import 'package:pharma/view/add_stock/type/product_bonus.dart';
 import 'package:pharma/view/buyer/home/model.dart';
 import 'package:provider/provider.dart';
 
-
-
 var _formKey = GlobalKey<FormState>();
 final ImagePicker _picker = ImagePicker();
 
-class AddStock extends StatelessWidget {
+class AddStock extends StatefulWidget {
   AddStock({Key? key}) : super(key: key);
 
   @override
+  State<AddStock> createState() => _AddStockState();
+}
+
+class _AddStockState extends State<AddStock> {
+  gettoken() async {
+    var token = await getToken();
+    print(token);
+  }
+
+  @override
+  void initState() {
+    gettoken();
+
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+//     List<XFile>? imageFileList = [];
+//     List imageNames = [];
+// //function to select image and add the images to the imageFileList array
+//     void selectImages() async {
+//       final List<XFile>? selectedImages = await _picker.pickMultiImage();
+//       if (selectedImages!.isNotEmpty) {
+//         imageFileList.addAll(selectedImages);
+//       }
+//       //using set state to refresh the page to show the image to the grid
+//       setState(() {});
+//       print("Image List Length:  ${imageFileList.length.toString()}");
+//       print("Image List:  $imageFileList");
+//     }
+
+//     late FormData data;
+//     //function to upload the image to php server
+//     void _upload(File file) async {
+//       String fileName = file.path.split('/').last;
+//       data = FormData.fromMap({
+//         "file": await MultipartFile.fromFile(
+//           file.path,
+//           filename: fileName,
+//         ),
+//       });
+//     }
+
     return Consumer<AddStockProvider>(builder: (context, data, snapshot) {
       data.setCategoryLoad();
       return Scaffold(
@@ -57,19 +99,36 @@ class AddStock extends StatelessWidget {
                       height: 80,
                       width: 80,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          border: Border.all(
-                              color: Colors.grey.shade100, width: 1)),
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(
+                          color: Colors.grey.shade100,
+                          width: 1,
+                        ),
+                      ),
                       child: InkWell(
                         onTap: () async {
                           // Pick an image
                           final XFile? image = await _picker.pickImage(
                               source: ImageSource.gallery);
                           if (image != null) {
-                            imageUpload(context, File(image.path))
-                                .then((value) {
-                              data.addImage(value!.resultImage!.location!);
+                            String fileName = image.path.split('/').last;
+                            FormData dataImg = FormData.fromMap({
+                              "file": await MultipartFile.fromFile(image.path,
+                                  filename: fileName),
                             });
+                            postImage(dataImg).then(
+                              (value) {
+                                print("---->$value");
+                                // var imageUrl =
+                                //     "https://" + value.toStirng().split("https://")[1];
+                                // print('image url -->$imageUrl');
+                                data.addImage(value.toString());
+                              },
+                            );
+                            // imageUpload(context, File(image.path))
+                            //     .then((value) {
+                            //   data.addImage(value!.resultImage!.location!);
+                            // });
                           }
                         },
                         child: Icon(
@@ -90,6 +149,7 @@ class AddStock extends StatelessWidget {
                         itemCount: data.imageList.length,
                         itemBuilder: (context, index) {
                           var ds = data.imageList[index];
+                          print('ds ------>>$ds');
                           return Container(
                             margin: EdgeInsets.symmetric(horizontal: 10),
                             height: 80,

@@ -1,10 +1,66 @@
 import 'dart:convert';
 import 'dart:io';
-
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:pharma/query/const.dart';
 import 'package:pharma/query/seller/global.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+Dio dio = Dio();
+
+Future<String?> getToken() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var token = prefs.getString("seller_token");
+
+  return token;
+}
+
+Future postImage(
+  data,
+) async {
+  var token = await getToken();
+  print(token);
+  dio.options.headers['content-Type'] = 'application/json';
+  dio.options.headers["authorization"] = "bearer $token";
+//using dio to post imagename to the mongodg api and the name we get from the php server
+  var postData = await dio.post("http://65.2.38.131/upload.php", data: data);
+  print('postdata----->${postData.statusCode}');
+  return postData;
+}
+
+class UploadDataResponse {
+  UploadDataResponse({
+    required this.postUploaded,
+  });
+
+  PostUploaded postUploaded;
+
+  factory UploadDataResponse.fromJson(Map<String, dynamic> json) =>
+      UploadDataResponse(
+        postUploaded: PostUploaded.fromJson(json["post uploaded"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "post uploaded": postUploaded.toJson(),
+      };
+}
+
+class PostUploaded {
+  PostUploaded({
+    required this.postImage,
+  });
+
+  List<String> postImage;
+
+  factory PostUploaded.fromJson(Map<String, dynamic> json) => PostUploaded(
+        postImage: List<String>.from(json["post_image"].map((x) => x)),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "post_image": List<dynamic>.from(postImage.map((x) => x)),
+      };
+}
 
 Future<UploadedImageResponse?> imageUpload(
     BuildContext context, File file) async {
